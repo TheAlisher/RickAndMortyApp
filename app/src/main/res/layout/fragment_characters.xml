@@ -5,13 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.characters.CharactersFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_characters"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/fragment_label_characters"
-        android:textColor="@color/Black"
-        android:textSize="30sp" />
+        tools:listitem="@layout/item_character" />
 
 
 </FrameLayout>
