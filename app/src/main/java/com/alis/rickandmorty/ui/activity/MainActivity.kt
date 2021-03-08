@@ -9,8 +9,10 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
 import com.alis.rickandmorty.databinding.ActivityMainBinding
 import com.alis.rickandmorty.extensions.gone
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding

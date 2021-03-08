@@ -1,5 +1,6 @@
 package com.alis.rickandmorty.ui.fragments.locations
 
+import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
 import com.alis.rickandmorty.base.BaseFragment
@@ -9,7 +10,7 @@ class LocationsFragment : BaseFragment<LocationsViewModel, FragmentLocationsBind
     R.layout.fragment_locations
 ) {
 
-    override val viewModel: LocationsViewModel = TODO()
+    override val viewModel: LocationsViewModel by viewModels()
     override val binding: FragmentLocationsBinding by viewBinding()
 
     override fun setupViews() {
