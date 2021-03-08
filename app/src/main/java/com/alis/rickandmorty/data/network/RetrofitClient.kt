@@ -1,4 +1,4 @@
-package com.alis.rickandmorty.data.network.retrofit
+package com.alis.rickandmorty.data.network
 
 import com.alis.rickandmorty.constants.NetworkConstants
 import okhttp3.OkHttpClient

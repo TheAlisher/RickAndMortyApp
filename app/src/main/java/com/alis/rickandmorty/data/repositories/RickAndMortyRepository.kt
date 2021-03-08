@@ -1,6 +1,6 @@
 package com.alis.rickandmorty.data.repositories
 
-import com.alis.rickandmorty.data.network.retrofit.RickAndMortyAPI
+import com.alis.rickandmorty.data.network.RickAndMortyAPI
 import javax.inject.Inject
 
 class RickAndMortyRepository @Inject constructor(
