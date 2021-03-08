@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigation_characters">
+
+    <action
+        android:id="@+id/action_global_detailFragment"
+        app:destination="@id/detailFragment" />
+
+    <fragment
+        android:id="@+id/navigation_characters"
+        android:name="com.alis.rickandmorty.ui.fragments.characters.CharactersFragment"
+        android:label="@string/fragment_label_characters"
+        tools:layout="@layout/fragment_characters" />
+
+    <fragment
+        android:id="@+id/navigation_locations"
+        android:name="com.alis.rickandmorty.ui.fragments.locations.LocationsFragment"
+        android:label="@string/fragment_label_locations"
+        tools:layout="@layout/fragment_locations" />
+
+    <fragment
+        android:id="@+id/navigation_episodes"
+        android:name="com.alis.rickandmorty.ui.fragments.episodes.EpisodesFragment"
+        android:label="@string/fragment_label_episodes"
+        tools:layout="@layout/fragment_episodes" />
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.alis.rickandmorty.ui.fragments.detail.DetailFragment"
+        android:label="TODO"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="id"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+
+
+</navigation>

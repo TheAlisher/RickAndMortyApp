@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">RickAndMortyApp</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--region FragmentLabel-->
+    <string name="fragment_label_characters">Персонажи</string>
+    <string name="fragment_label_locations">Локации</string>
+    <string name="fragment_label_episodes">Эпизоды</string>
+    <!--endregion-->
+
+
+</resources>
