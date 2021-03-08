@@ -5,7 +5,9 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
 import com.alis.rickandmorty.base.BaseFragment
 import com.alis.rickandmorty.databinding.FragmentLocationsBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LocationsFragment : BaseFragment<LocationsViewModel, FragmentLocationsBinding>(
     R.layout.fragment_locations
 ) {
