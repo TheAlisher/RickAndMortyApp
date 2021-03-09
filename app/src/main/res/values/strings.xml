@@ -52,4 +52,16 @@
     <!--endregion-->
 
 
+    <!--region Episode-->
+
+
+    <!--region ItemEpisode-->
+    <string name="Air_date_COLON">Air date:</string>
+    <string name="Code_of_episode">Code of episode</string>
+    <!--endregion-->
+
+
+    <!--endregion-->
+
+
 </resources>
