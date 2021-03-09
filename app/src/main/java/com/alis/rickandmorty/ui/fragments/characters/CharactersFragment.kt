@@ -20,7 +20,7 @@ class CharactersFragment : BaseFragment<CharactersViewModel, FragmentCharactersB
     override val viewModel: CharactersViewModel by viewModels()
     override val binding: FragmentCharactersBinding by viewBinding()
 
-    private val characterAdapter = CharacterAdapter()
+    private val characterAdapter = CharacterAdapter(this::onItemClick)
 
     override fun setupViews() {
         binding.recyclerCharacters.apply {
@@ -31,6 +31,10 @@ class CharactersFragment : BaseFragment<CharactersViewModel, FragmentCharactersB
 
     override fun setupListeners() {
 
+    }
+
+    private fun onItemClick() {
+        //TODO
     }
 
     override fun setupObservers() {

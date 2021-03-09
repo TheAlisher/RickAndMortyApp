@@ -1,7 +1,6 @@
 package com.alis.rickandmorty.extensions
 
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 

@@ -3,10 +3,14 @@ package com.alis.rickandmorty.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import com.alis.rickandmorty.R
 import com.alis.rickandmorty.databinding.ItemCharacterBinding
 import com.alis.rickandmorty.models.character.Character
 
-class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
+class CharacterAdapter(
+    val onItemClick: () -> Unit
+) : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
 
     private var list = mutableListOf<Character>()
 
@@ -20,6 +24,10 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHold
 
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
         holder.onBind(list[position])
+
+        holder.itemView.setOnClickListener {
+            onItemClick()
+        }
     }
 
     override fun getItemCount(): Int = list.size
@@ -29,7 +37,27 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHold
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun onBind(character: Character) {
-            binding.textFuck.text = character.name
+            binding.apply {
+                imageItemCharacter.load(character.image)
+                textItemCharacterName.text = character.name
+                when (character.status) {
+                    "Alive" -> {
+                        imageItemCharacterStatus.setImageResource(R.drawable.character_status_alive)
+                    }
+                    "Dead" -> {
+                        imageItemCharacterStatus.setImageResource(R.drawable.character_status_dead)
+                    }
+                    "unknown" -> {
+                        imageItemCharacterStatus.setImageResource(R.drawable.character_status_unknown)
+                    }
+                }
+                textItemCharacterStatusAndSpecies.text =
+                    textItemCharacterStatusAndSpecies.context.resources.getString(
+                        R.string.hyphen, character.status, character.species
+                    )
+                textItemCharacterLastKnownLocationData.text = character.location.name
+                textItemCharacterFirstSeenInData.text = "TODO" //TODO
+            }
         }
     }
 
