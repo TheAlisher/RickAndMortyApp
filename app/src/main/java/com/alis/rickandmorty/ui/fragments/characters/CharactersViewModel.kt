@@ -18,4 +18,8 @@ class CharactersViewModel @Inject constructor(
     fun fetchCharacters(): LiveData<Resource<Response<RickAndMortyResponse<Character>>>> {
         return repository.fetchCharacters()
     }
+
+    fun getCharacters(): MutableList<Character> {
+        return repository.loadCharacters()
+    }
 }

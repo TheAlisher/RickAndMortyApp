@@ -1,5 +1,6 @@
 package com.alis.rickandmorty.ui.fragments.characters
 
+import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -48,6 +49,7 @@ class CharactersFragment : BaseFragment<CharactersViewModel, FragmentCharactersB
                 }
                 Status.SUCCESS -> {
                     characterAdapter.setList(it.data!!.body()!!.results)
+                    Log.d("anime", viewModel.getCharacters().toString())
                 }
             }
         })
