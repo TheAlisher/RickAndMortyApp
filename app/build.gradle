@@ -123,4 +123,9 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
     // | optional - Kotlin Extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:$room_version"
+
+    // Ktor
+    def ktor_version = "1.5.2"
+    implementation "io.ktor:ktor-client-core:$ktor_version"
+    implementation "io.ktor:ktor-client-android:$ktor_version"
 }
