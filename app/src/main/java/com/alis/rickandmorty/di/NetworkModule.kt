@@ -1,7 +1,8 @@
 package com.alis.rickandmorty.di
 
-import com.alis.rickandmorty.data.network.RetrofitClient
-import com.alis.rickandmorty.data.network.RickAndMortyAPI
+import com.alis.rickandmorty.data.network.ktor.KtorClient
+import com.alis.rickandmorty.data.network.ktor.RickAndMortyRequests
+import com.alis.rickandmorty.data.network.retrofit.RetrofitClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,7 +15,10 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRickAndMortyAPI(): RickAndMortyAPI {
-        return RetrofitClient().provideRickAndMortyAPI()
-    }
+    fun provideRickAndMortyAPI() = RetrofitClient().provideRickAndMortyAPI()
+
+
+    @Singleton
+    @Provides
+    fun provideRickAndMortyRequests() = RickAndMortyRequests(KtorClient().provideClient())
 }

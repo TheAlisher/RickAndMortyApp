@@ -1,4 +1,4 @@
-package com.alis.rickandmorty.data.network
+package com.alis.rickandmorty.data.network.retrofit
 
 import com.alis.rickandmorty.constants.NetworkConstants
 import okhttp3.OkHttpClient
@@ -24,9 +24,9 @@ class RetrofitClient {
     }
 
     private val provideRetrofit = Retrofit.Builder()
-        .addConverterFactory(GsonConverterFactory.create())
         .baseUrl(NetworkConstants.BASE_URL)
         .client(okHttpClient)
+        .addConverterFactory(GsonConverterFactory.create())
         .build()
 
     fun provideRickAndMortyAPI(): RickAndMortyAPI =

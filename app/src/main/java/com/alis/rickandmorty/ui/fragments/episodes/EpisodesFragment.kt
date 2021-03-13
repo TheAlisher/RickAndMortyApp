@@ -47,7 +47,7 @@ class EpisodesFragment : BaseFragment<EpisodesViewModel, FragmentEpisodesBinding
                     showToastShort(it.message.toString())
                 }
                 Status.SUCCESS -> {
-                    episodeAdapter.setList(it.data!!.body()!!.results)
+                    episodeAdapter.setList(it.data?.results!!)
                 }
             }
         })

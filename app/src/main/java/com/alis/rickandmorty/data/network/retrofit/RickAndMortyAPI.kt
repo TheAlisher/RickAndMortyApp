@@ -1,4 +1,4 @@
-package com.alis.rickandmorty.data.network
+package com.alis.rickandmorty.data.network.retrofit
 
 import com.alis.rickandmorty.models.character.Character
 import com.alis.rickandmorty.models.common.RickAndMortyResponse
