@@ -1,8 +1,8 @@
 package com.alis.rickandmorty.di
 
 import android.content.Context
-import com.alis.rickandmorty.data.db.RoomClient
-import com.alis.rickandmorty.data.db.RoomDatabase
+import com.alis.rickandmorty.data.db.room.RoomClient
+import com.alis.rickandmorty.data.db.room.RoomDatabase
 import com.alis.rickandmorty.data.local.CharacterDao
 import dagger.Module
 import dagger.Provides

@@ -1,4 +1,4 @@
-package com.alis.rickandmorty.data.db
+package com.alis.rickandmorty.data.db.room
 
 import android.content.Context
 import androidx.room.Room

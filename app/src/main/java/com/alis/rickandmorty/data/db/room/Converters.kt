@@ -1,4 +1,4 @@
-package com.alis.rickandmorty.data.db
+package com.alis.rickandmorty.data.db.room
 
 import androidx.room.TypeConverter
 import com.alis.rickandmorty.models.character.Origin
