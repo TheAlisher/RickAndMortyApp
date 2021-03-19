@@ -134,4 +134,9 @@ dependencies {
     implementation "io.ktor:ktor-client-okhttp:$ktor_version"
     // | Gson
     implementation "io.ktor:ktor-client-gson:$ktor_version"
+
+    // Dagger
+    def dagger_version = '2.33'
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
 }
