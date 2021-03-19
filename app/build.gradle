@@ -9,7 +9,7 @@ plugins {
     id 'kotlin-kapt'
 
     // Hilt
-    // id 'dagger.hilt.android.plugin'
+    id 'dagger.hilt.android.plugin'
 
     // Realm
     id 'realm-android'
@@ -111,8 +111,8 @@ dependencies {
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 
     // Hilt
-    /*implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-compiler:$hilt_version"*/
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
 
     // Kotlin Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2'
