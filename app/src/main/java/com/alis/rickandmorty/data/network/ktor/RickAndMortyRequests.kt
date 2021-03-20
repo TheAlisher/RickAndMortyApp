@@ -9,5 +9,5 @@ class RickAndMortyRequests(
     private val client: HttpClient
 ) {
 
-    suspend fun fetchEpisodes() = client.get<RickAndMortyResponse<Episode>>("/episode")
+    suspend fun fetchEpisodes() = client.get<RickAndMortyResponse<Episode>>("/api/episode")
 }

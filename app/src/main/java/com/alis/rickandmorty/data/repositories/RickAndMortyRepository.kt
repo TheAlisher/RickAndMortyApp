@@ -15,10 +15,12 @@ class RickAndMortyRepository @Inject constructor(
     private val requests: RickAndMortyRequests
 ) {
 
-    fun fetchCharacters() = liveData(Dispatchers.IO) {
+    fun fetchCharacters(
+        page: Int
+    ) = liveData(Dispatchers.IO) {
         emit(Resource.loading(data = null))
         try {
-            val request = Resource.success(data = api.fetchCharacters())
+            val request = Resource.success(data = api.fetchCharacters(page))
             emit(request)
             saveCharacters(request.data?.body()?.results!!)
         } catch (E: Exception) {

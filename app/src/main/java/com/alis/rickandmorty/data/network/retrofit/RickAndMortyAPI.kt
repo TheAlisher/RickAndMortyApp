@@ -6,16 +6,16 @@ import com.alis.rickandmorty.models.episode.Episode
 import com.alis.rickandmorty.models.location.Location
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface RickAndMortyAPI {
 
-    @GET("character")
-    suspend fun fetchCharacters(): Response<RickAndMortyResponse<Character>>
+    @GET("/api/character")
+    suspend fun fetchCharacters(@Query("page") page: Int): Response<RickAndMortyResponse<Character>>
 
-    @GET("location")
+    @GET("/api/location")
     suspend fun fetchLocations(): Response<RickAndMortyResponse<Location>>
 
-    @GET("episode")
+    @GET("/api/episode")
     suspend fun fetchEpisodes(): Response<RickAndMortyResponse<Episode>>
 }

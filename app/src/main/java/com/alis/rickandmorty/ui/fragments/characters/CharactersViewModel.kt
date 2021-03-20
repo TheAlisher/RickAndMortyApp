@@ -15,8 +15,10 @@ class CharactersViewModel @Inject constructor(
     private val repository: RickAndMortyRepository
 ) : BaseViewModel() {
 
+    private var page = 0
+
     fun fetchCharacters(): LiveData<Resource<Response<RickAndMortyResponse<Character>>>> {
-        return repository.fetchCharacters()
+        return repository.fetchCharacters(page)
     }
 
     fun getCharacters(): MutableList<Character> {
