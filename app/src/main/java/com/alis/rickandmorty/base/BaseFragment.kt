@@ -2,27 +2,38 @@ package com.alis.rickandmorty.base
 
 import android.os.Bundle
 import android.view.View
+import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
-import androidx.viewbinding.ViewBinding
 
-abstract class BaseFragment<ViewModel : BaseViewModel, Binding : ViewBinding>(
-    layoutID: Int
-) : Fragment(layoutID) {
-
-    protected abstract val viewModel: ViewModel
-    protected abstract val binding: Binding
+abstract class BaseFragment(@LayoutRes layoutId: Int) : Fragment(layoutId) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initialize()
         setupViews()
         setupListeners()
+        setupRequests()
         setupObservers()
     }
 
-    abstract fun setupViews()
+    open fun initialize() {
 
-    abstract fun setupListeners()
+    }
 
-    abstract fun setupObservers()
+    open fun setupViews() {
+
+    }
+
+    open fun setupListeners() {
+
+    }
+
+    open fun setupRequests() {
+
+    }
+
+    open fun setupObservers() {
+
+    }
 }

@@ -4,7 +4,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
-import com.alis.rickandmorty.base.BaseFragment
+import com.alis.rickandmorty.base.BaseFragmentWithViewModel
 import com.alis.rickandmorty.data.network.Status
 import com.alis.rickandmorty.databinding.FragmentEpisodesBinding
 import com.alis.rickandmorty.extensions.showToastLong
@@ -13,7 +13,7 @@ import com.alis.rickandmorty.ui.adapters.EpisodeAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class EpisodesFragment : BaseFragment<EpisodesViewModel, FragmentEpisodesBinding>(
+class EpisodesFragment : BaseFragmentWithViewModel<EpisodesViewModel, FragmentEpisodesBinding>(
     R.layout.fragment_episodes
 ) {
 

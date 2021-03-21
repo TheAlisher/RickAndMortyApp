@@ -4,7 +4,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
-import com.alis.rickandmorty.base.BaseFragment
+import com.alis.rickandmorty.base.BaseFragmentWithViewModel
 import com.alis.rickandmorty.data.network.Status
 import com.alis.rickandmorty.databinding.FragmentLocationsBinding
 import com.alis.rickandmorty.extensions.showToastLong
@@ -13,7 +13,7 @@ import com.alis.rickandmorty.ui.adapters.LocationAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LocationsFragment : BaseFragment<LocationsViewModel, FragmentLocationsBinding>(
+class LocationsFragment : BaseFragmentWithViewModel<LocationsViewModel, FragmentLocationsBinding>(
     R.layout.fragment_locations
 ) {
 
