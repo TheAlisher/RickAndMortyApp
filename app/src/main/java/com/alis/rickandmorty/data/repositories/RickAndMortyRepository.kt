@@ -1,12 +1,17 @@
 package com.alis.rickandmorty.data.repositories
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import androidx.paging.*
 import com.alis.rickandmorty.data.local.CharacterDao
 import com.alis.rickandmorty.data.network.Resource
 import com.alis.rickandmorty.data.network.ktor.RickAndMortyRequests
 import com.alis.rickandmorty.data.network.retrofit.RickAndMortyAPI
+import com.alis.rickandmorty.data.paging.CharacterPagingSource
+import com.alis.rickandmorty.data.paging.RickAndMortyPagingSource
 import com.alis.rickandmorty.models.character.Character
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class RickAndMortyRepository @Inject constructor(
@@ -15,7 +20,31 @@ class RickAndMortyRepository @Inject constructor(
     private val requests: RickAndMortyRequests
 ) {
 
-    fun fetchCharacters(
+    fun fetchCharacters(): LiveData<PagingData<Character>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 10,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = {
+                CharacterPagingSource(api)
+            }
+        ).liveData
+    }
+
+    /*fun fetchCharacters(): Flow<PagingData<Character>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 10,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = {
+                RickAndMortyPagingSource(api)
+            }
+        ).flow
+    }*/
+
+    /*fun fetchCharacters(
         page: Int
     ) = liveData(Dispatchers.IO) {
         emit(Resource.loading(data = null))
@@ -26,7 +55,7 @@ class RickAndMortyRepository @Inject constructor(
         } catch (E: Exception) {
             emit(Resource.error(data = null, message = E.message ?: "Error Occurred!"))
         }
-    }
+    }*/
 
     private fun saveCharacters(characters: MutableList<Character>) {
         characterDao.insertAll(characters)

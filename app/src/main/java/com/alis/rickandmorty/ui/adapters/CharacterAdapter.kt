@@ -1,18 +1,25 @@
 package com.alis.rickandmorty.ui.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingData
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.alis.rickandmorty.R
 import com.alis.rickandmorty.databinding.ItemCharacterBinding
 import com.alis.rickandmorty.models.character.Character
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class CharacterAdapter(
     val onItemClick: () -> Unit
-) : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
-
-    private var list = mutableListOf<Character>()
+) : PagingDataAdapter<Character, CharacterAdapter.CharacterViewHolder>(
+    diffCallback
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
         return CharacterViewHolder(
@@ -23,18 +30,18 @@ class CharacterAdapter(
     }
 
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
-        holder.onBind(list[position])
-
-        holder.itemView.setOnClickListener {
-            onItemClick()
-        }
+        getItem(position)?.let { holder.onBind(it) }
     }
-
-    override fun getItemCount(): Int = list.size
 
     inner class CharacterViewHolder(
         private val binding: ItemCharacterBinding
     ) : RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            itemView.setOnClickListener {
+                onItemClick()
+            }
+        }
 
         fun onBind(character: Character) {
             binding.apply {
@@ -61,8 +68,15 @@ class CharacterAdapter(
         }
     }
 
-    fun setList(list: MutableList<Character>) {
-        this.list = list
-        notifyDataSetChanged()
+    companion object {
+        val diffCallback = object : DiffUtil.ItemCallback<Character>() {
+            override fun areItemsTheSame(oldItem: Character, newItem: Character): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: Character, newItem: Character): Boolean {
+                return oldItem == newItem
+            }
+        }
     }
 }
