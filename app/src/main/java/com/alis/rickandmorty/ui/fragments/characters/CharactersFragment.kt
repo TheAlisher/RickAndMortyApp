@@ -39,8 +39,8 @@ class CharactersFragment :
 
         characterAdapter.addLoadStateListener { loadStates ->
             binding.apply {
+                recyclerCharacters.isVisible = loadStates.refresh is LoadState.NotLoading
                 progressCharactersLoader.isVisible = loadStates.refresh is LoadState.Loading
-                recyclerCharacters.isVisible = loadStates.refresh !is LoadState.Loading
             }
         }
     }
@@ -50,7 +50,6 @@ class CharactersFragment :
     }
 
     private fun onItemClick() {
-        findNavController().navigate(R.id.action_global_detailFragment)
     }
 
     override fun setupObservers() {
