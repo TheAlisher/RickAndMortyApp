@@ -1,24 +1,19 @@
 package com.alis.rickandmorty.ui.fragments.characters
 
-import android.util.Log
-import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
-import androidx.paging.map
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
 import com.alis.rickandmorty.base.BaseFragmentWithViewModel
 import com.alis.rickandmorty.databinding.FragmentCharactersBinding
-import com.alis.rickandmorty.extensions.showToastLong
 import com.alis.rickandmorty.ui.adapters.CharacterAdapter
 import com.alis.rickandmorty.ui.common.LoadStateAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
 class CharactersFragment :
@@ -55,7 +50,7 @@ class CharactersFragment :
     }
 
     private fun onItemClick() {
-        //TODO
+        findNavController().navigate(R.id.action_global_detailFragment)
     }
 
     override fun setupObservers() {
