@@ -7,11 +7,9 @@ import com.alis.rickandmorty.data.local.CharacterDao
 import com.alis.rickandmorty.data.network.Resource
 import com.alis.rickandmorty.data.network.ktor.RickAndMortyRequests
 import com.alis.rickandmorty.data.network.retrofit.RickAndMortyAPI
-import com.alis.rickandmorty.data.paging.CharacterPagingSource
-import com.alis.rickandmorty.data.paging.RickAndMortyPagingSource
+import com.alis.rickandmorty.data.paging.character.CharacterPagingSource
 import com.alis.rickandmorty.models.character.Character
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class RickAndMortyRepository @Inject constructor(
