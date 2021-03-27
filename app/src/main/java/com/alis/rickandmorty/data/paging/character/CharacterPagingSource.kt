@@ -3,7 +3,7 @@ package com.alis.rickandmorty.data.paging.character
 import android.net.Uri
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.alis.rickandmorty.data.network.retrofit.RickAndMortyAPI
+import com.alis.rickandmorty.data.network.retrofit.CharacterApiService
 import com.alis.rickandmorty.models.character.Character
 import retrofit2.HttpException
 import java.io.IOException
@@ -11,13 +11,13 @@ import java.io.IOException
 private const val CHARACTER_STARTING_PAGE_INDEX = 30
 
 class CharacterPagingSource(
-    private val APIService: RickAndMortyAPI,
+    private val characterApiService: CharacterApiService,
 ) : PagingSource<Int, Character>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Character> {
         val position = params.key ?: CHARACTER_STARTING_PAGE_INDEX
         return try {
-            val response = APIService.fetchCharacters(position)
+            val response = characterApiService.fetchCharacters(position)
             val repos = response.body()
             val next = repos?.info?.next
             val nextPageNumber = if (next == null) {

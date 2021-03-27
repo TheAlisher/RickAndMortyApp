@@ -5,7 +5,7 @@ import com.alis.rickandmorty.models.episode.Episode
 import io.ktor.client.*
 import io.ktor.client.request.*
 
-class RickAndMortyRequests(
+class EpisodeApiService(
     private val client: HttpClient
 ) {
 

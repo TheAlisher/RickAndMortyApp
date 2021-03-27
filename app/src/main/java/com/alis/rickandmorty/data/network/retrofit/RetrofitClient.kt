@@ -23,12 +23,15 @@ class RetrofitClient {
         }
     }
 
-    private val provideRetrofit = Retrofit.Builder()
+    internal val provideRetrofit = Retrofit.Builder()
         .baseUrl(NetworkConstants.BASE_URL)
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    fun provideRickAndMortyAPI(): RickAndMortyAPI =
-        provideRetrofit.create(RickAndMortyAPI::class.java)
+    fun provideCharacterApiService(retrofit: Retrofit): CharacterApiService = retrofit
+        .create(CharacterApiService::class.java)
+
+    fun provideLocationApiService(retrofit: Retrofit): LocationApiService = retrofit
+        .create(LocationApiService::class.java)
 }
