@@ -23,7 +23,7 @@ class RetrofitClient {
         }
     }
 
-    internal val provideRetrofit = Retrofit.Builder()
+    private val provideRetrofit = Retrofit.Builder()
         .baseUrl(NetworkConstants.BASE_URL)
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
