@@ -102,9 +102,9 @@ dependencies {
     implementation "com.github.kirich1409:viewbindingpropertydelegate:$view_binding_property_delegate_version"
 
     // DataStore
-    def data_store_version = '1.0.0-alpha07'
+    def data_store_version = '1.0.0-alpha08'
     // | Preferences
-    implementation "androidx.datastore:datastore-preferences:1.0.0-alpha07"
+    implementation "androidx.datastore:datastore-preferences:$data_store_version"
 
     // Paging
     def paging_version = "3.0.0-beta02"
