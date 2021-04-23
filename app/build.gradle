@@ -100,6 +100,8 @@ dependencies {
 
     // DataStore
     def data_store_version = '1.0.0-beta01'
+    // | Typed
+    implementation "androidx.datastore:datastore:$data_store_version"
     // | Preferences
     implementation "androidx.datastore:datastore-preferences:$data_store_version"
 
