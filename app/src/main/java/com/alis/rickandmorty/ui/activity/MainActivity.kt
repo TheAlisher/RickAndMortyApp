@@ -17,9 +17,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity @Inject constructor(
-    private val dataStorePreferences: DataStorePreferences
-) : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
