@@ -1,15 +1,16 @@
 package com.alis.rickandmorty.ui.fragments.episodes
 
+import android.util.Log
+import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
 import com.alis.rickandmorty.base.BaseFragmentWithViewModel
-import com.alis.rickandmorty.data.network.Status
 import com.alis.rickandmorty.data.network._Resource
 import com.alis.rickandmorty.databinding.FragmentEpisodesBinding
-import com.alis.rickandmorty.extensions.showToastLong
+import com.alis.rickandmorty.extensions.gone
 import com.alis.rickandmorty.extensions.showToastShort
 import com.alis.rickandmorty.extensions.visible
 import com.alis.rickandmorty.ui.adapters.EpisodeAdapter
@@ -44,13 +45,15 @@ class EpisodesFragment : BaseFragmentWithViewModel<EpisodesViewModel, FragmentEp
         viewModel.fetchEpisodes().observe(viewLifecycleOwner, {
             when (it) {
                 is _Resource.Loading -> {
-                    binding.progressEpisodesLoader.isVisible = it.isLoading
+                    binding.progressEpisodesLoader.visible()
                 }
                 is _Resource.Error -> {
+                    binding.progressEpisodesLoader.gone()
                     showToastShort(it.message.toString())
                 }
                 is _Resource.Success -> {
-                    episodeAdapter.setList(it.data?.results!!)
+                    binding.progressEpisodesLoader.gone()
+                    episodeAdapter.submitList(it.data?.results!!)
                 }
             }
         })
