@@ -59,20 +59,4 @@ class CharactersFragment :
             }
         })
     }
-
-
-    /*viewModel.fetchCharacters().observe(viewLifecycleOwner, {
-        when (it.status) {
-            Status.LOADING -> {
-                showToastLong("LOADING")
-            }
-            Status.ERROR -> {
-                showToastShort(it.message.toString())
-            }
-            Status.SUCCESS -> {
-                characterAdapter.setList(it.data!!.body()!!.results)
-                Log.d("anime", viewModel.getCharacters().toString())
-            }
-        }
-    })*/
 }
