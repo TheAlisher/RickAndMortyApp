@@ -1,4 +1,4 @@
-package com.alis.rickandmorty.data.paging.character
+package com.alis.rickandmorty.data.repositories.pagingsources.character
 
 import android.net.Uri
 import androidx.paging.PagingSource

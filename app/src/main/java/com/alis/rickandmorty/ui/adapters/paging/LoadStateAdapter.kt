@@ -1,4 +1,4 @@
-package com.alis.rickandmorty.ui.common
+package com.alis.rickandmorty.ui.adapters.paging
 
 import android.view.ViewGroup
 import androidx.paging.LoadState

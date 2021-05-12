@@ -1,4 +1,4 @@
-package com.alis.rickandmorty.data.local
+package com.alis.rickandmorty.data.db.room.daos
 
 import androidx.room.Dao
 import androidx.room.Insert

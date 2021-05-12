@@ -2,7 +2,7 @@ package com.alis.rickandmorty.data.db.room
 
 import android.content.Context
 import androidx.room.Room
-import com.alis.rickandmorty.data.local.CharacterDao
+import com.alis.rickandmorty.data.db.room.daos.CharacterDao
 
 class RoomClient {
 

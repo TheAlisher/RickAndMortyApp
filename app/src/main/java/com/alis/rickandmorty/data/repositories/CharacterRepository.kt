@@ -6,7 +6,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.liveData
 import com.alis.rickandmorty.data.network.retrofit.CharacterApiService
-import com.alis.rickandmorty.data.paging.character.CharacterPagingSource
+import com.alis.rickandmorty.data.repositories.pagingsources.character.CharacterPagingSource
 import com.alis.rickandmorty.models.character.Character
 import javax.inject.Inject
 

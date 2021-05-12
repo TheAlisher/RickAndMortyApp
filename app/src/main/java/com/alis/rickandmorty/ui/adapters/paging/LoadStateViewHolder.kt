@@ -1,11 +1,10 @@
-package com.alis.rickandmorty.ui.common
+package com.alis.rickandmorty.ui.adapters.paging
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.RecyclerView
-import com.alis.rickandmorty.R
 import com.alis.rickandmorty.databinding.ItemLoadStateFooterViewBinding
 
 class LoadStateViewHolder(
