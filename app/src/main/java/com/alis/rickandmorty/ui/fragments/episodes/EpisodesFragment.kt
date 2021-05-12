@@ -1,14 +1,17 @@
 package com.alis.rickandmorty.ui.fragments.episodes
 
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
 import com.alis.rickandmorty.base.BaseFragmentWithViewModel
 import com.alis.rickandmorty.data.network.Status
+import com.alis.rickandmorty.data.network._Resource
 import com.alis.rickandmorty.databinding.FragmentEpisodesBinding
 import com.alis.rickandmorty.extensions.showToastLong
 import com.alis.rickandmorty.extensions.showToastShort
+import com.alis.rickandmorty.extensions.visible
 import com.alis.rickandmorty.ui.adapters.EpisodeAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -39,14 +42,14 @@ class EpisodesFragment : BaseFragmentWithViewModel<EpisodesViewModel, FragmentEp
 
     override fun setupObservers() {
         viewModel.fetchEpisodes().observe(viewLifecycleOwner, {
-            when (it.status) {
-                Status.LOADING -> {
-                    showToastLong("LOADING")
+            when (it) {
+                is _Resource.Loading -> {
+                    binding.progressEpisodesLoader.isVisible = it.isLoading
                 }
-                Status.ERROR -> {
+                is _Resource.Error -> {
                     showToastShort(it.message.toString())
                 }
-                Status.SUCCESS -> {
+                is _Resource.Success -> {
                     episodeAdapter.setList(it.data?.results!!)
                 }
             }

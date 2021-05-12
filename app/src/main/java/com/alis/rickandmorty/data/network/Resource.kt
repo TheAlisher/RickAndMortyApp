@@ -23,3 +23,13 @@ enum class Status {
     ERROR,
     LOADING
 }
+
+sealed class _Resource<out T>(
+    val data: T? = null,
+    val message: String? = null,
+    val isLoading: Boolean = false
+) {
+    class Loading<T>(data: T? = null) : _Resource<T>(data = data, isLoading = true)
+    class Success<T>(data: T) : _Resource<T>(data = data)
+    class Error<T>(message: String, data: T? = null) : _Resource<T>(data = data, message = message)
+}
