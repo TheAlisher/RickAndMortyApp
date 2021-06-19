@@ -30,7 +30,10 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
-        binding.bottomNavigation.setupWithNavController(navController)
+        binding.bottomNavigation.apply {
+            itemIconTintList = null
+            setupWithNavController(navController)
+        }
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_characters,
