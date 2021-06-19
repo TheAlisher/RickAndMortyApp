@@ -7,11 +7,6 @@ import androidx.fragment.app.Fragment
 
 abstract class BaseFragment(@LayoutRes layoutId: Int) : Fragment(layoutId) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
