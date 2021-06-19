@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
@@ -15,6 +16,8 @@ import com.alis.rickandmorty.extensions.showToastShort
 import com.alis.rickandmorty.extensions.visible
 import com.alis.rickandmorty.ui.adapters.EpisodeAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class EpisodesFragment : BaseFragmentWithViewModel<EpisodesViewModel, FragmentEpisodesBinding>(
@@ -42,20 +45,22 @@ class EpisodesFragment : BaseFragmentWithViewModel<EpisodesViewModel, FragmentEp
     }
 
     override fun setupObservers() {
-        viewModel.fetchEpisodes().observe(viewLifecycleOwner, {
-            when (it) {
-                is _Resource.Loading -> {
-                    binding.progressEpisodesLoader.visible()
-                }
-                is _Resource.Error -> {
-                    binding.progressEpisodesLoader.gone()
-                    showToastShort(it.message.toString())
-                }
-                is _Resource.Success -> {
-                    binding.progressEpisodesLoader.gone()
-                    episodeAdapter.submitList(it.data?.results!!)
+        lifecycleScope.launch {
+            viewModel.fetchEpisodes().collect {
+                when (it) {
+                    is _Resource.Loading -> {
+                        binding.progressEpisodesLoader.visible()
+                    }
+                    is _Resource.Error -> {
+                        binding.progressEpisodesLoader.gone()
+                        showToastShort(it.message.toString())
+                    }
+                    is _Resource.Success -> {
+                        binding.progressEpisodesLoader.gone()
+                        episodeAdapter.submitList(it.data?.results!!)
+                    }
                 }
             }
-        })
+        }
     }
 }

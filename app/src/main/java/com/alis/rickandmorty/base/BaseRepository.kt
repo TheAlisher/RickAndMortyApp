@@ -1,12 +1,11 @@
 package com.alis.rickandmorty.base
 
-import androidx.lifecycle.liveData
 import com.alis.rickandmorty.data.network._Resource
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.flow
 
 abstract class BaseRepository {
 
-    protected fun <T> doRequest(request: suspend () -> T) = liveData(Dispatchers.IO) {
+    protected fun <T> doRequest(request: suspend () -> T) = flow {
         emit(_Resource.Loading())
         try {
             emit(_Resource.Success(data = request()))
