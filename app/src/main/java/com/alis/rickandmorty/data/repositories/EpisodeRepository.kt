@@ -12,7 +12,7 @@ class EpisodeRepository @Inject constructor(
     private val episodeApiService: EpisodeApiService
 ) : BaseRepository() {
 
-    fun fetchEpisodes(): Flow<_Resource<RickAndMortyResponse<Episode>>> {
-        return doRequest { episodeApiService.fetchEpisodes() }
+    fun fetchEpisodes() = doRequest {
+        episodeApiService.fetchEpisodes()
     }
 }
