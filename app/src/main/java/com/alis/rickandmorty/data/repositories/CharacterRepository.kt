@@ -1,20 +1,19 @@
 package com.alis.rickandmorty.data.repositories
 
-import androidx.lifecycle.LiveData
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import androidx.paging.liveData
 import com.alis.rickandmorty.data.network.retrofit.CharacterApiService
 import com.alis.rickandmorty.data.repositories.pagingsources.character.CharacterPagingSource
 import com.alis.rickandmorty.models.character.Character
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class CharacterRepository @Inject constructor(
     private val characterApiService: CharacterApiService
 ) {
 
-    fun fetchCharacters(): LiveData<PagingData<Character>> {
+    fun fetchCharacters(): Flow<PagingData<Character>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 10,
@@ -23,6 +22,6 @@ class CharacterRepository @Inject constructor(
             pagingSourceFactory = {
                 CharacterPagingSource(characterApiService)
             }
-        ).liveData
+        ).flow
     }
 }

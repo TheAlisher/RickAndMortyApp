@@ -13,6 +13,7 @@ import com.alis.rickandmorty.ui.adapters.CharacterAdapter
 import com.alis.rickandmorty.ui.adapters.paging.LoadStateAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
 class CharactersFragment :
@@ -52,10 +53,10 @@ class CharactersFragment :
     }
 
     override fun setupObservers() {
-        viewModel.fetchCharacters().observe(viewLifecycleOwner, {
-            viewLifecycleOwner.lifecycleScope.launch {
+        lifecycleScope.launch {
+            viewModel.fetchCharacters().collectLatest {
                 characterAdapter.submitData(it)
             }
-        })
+        }
     }
 }
