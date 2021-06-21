@@ -41,6 +41,25 @@ class CharacterAdapter(
             itemView.setOnClickListener {
                 onItemClick()
             }
+
+            binding.apply {
+
+                imageItemCharacter.setOnLongClickListener {
+                    Log.d("anime", "imageItemCharacter")
+                    // TODO
+                    true
+                }
+
+                textItemCharacterLastKnownLocationData.setOnClickListener {
+                    Log.d("anime", "textItemCharacterLastKnownLocationData")
+                    //TODO
+                }
+
+                textItemCharacterFirstSeenInData.setOnClickListener {
+                    Log.d("anime", "textItemCharacterFirstSeenInData")
+                    //TODO
+                }
+            }
         }
 
         fun onBind(character: Character) {
