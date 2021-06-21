@@ -1,7 +1,7 @@
 package com.alis.rickandmorty.data.repositories
 
 import com.alis.rickandmorty.base.BaseRepository
-import com.alis.rickandmorty.data.network.ktor.EpisodeApiService
+import com.alis.rickandmorty.data.network.retrofit.apiservices.EpisodeApiService
 import javax.inject.Inject
 
 class EpisodeRepository @Inject constructor(
