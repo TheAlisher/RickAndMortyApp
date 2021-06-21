@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
 import com.alis.rickandmorty.base.BaseFragment
-import com.alis.rickandmorty.data.network._Resource
+import com.alis.rickandmorty.data.resource.Resource
 import com.alis.rickandmorty.databinding.FragmentEpisodesBinding
 import com.alis.rickandmorty.extensions.gone
 import com.alis.rickandmorty.extensions.showToastShort
@@ -41,14 +41,14 @@ class EpisodesFragment : BaseFragment<EpisodesViewModel, FragmentEpisodesBinding
         lifecycleScope.launch {
             viewModel.fetchEpisodes().collect {
                 when (it) {
-                    is _Resource.Loading -> {
+                    is Resource.Loading -> {
                         binding.progressEpisodesLoader.visible()
                     }
-                    is _Resource.Error -> {
+                    is Resource.Error -> {
                         binding.progressEpisodesLoader.gone()
                         showToastShort(it.message.toString())
                     }
-                    is _Resource.Success -> {
+                    is Resource.Success -> {
                         binding.progressEpisodesLoader.gone()
                         episodeAdapter.submitList(it.data?.results!!)
                     }
