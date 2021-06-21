@@ -1,6 +1,7 @@
 package com.alis.rickandmorty.data.network.ktor
 
 import com.alis.rickandmorty.constants.Constants
+import com.alis.rickandmorty.data.network.okhttp.interceptors.LoggingInterceptor
 import io.ktor.client.*
 import io.ktor.client.engine.okhttp.*
 import io.ktor.client.features.*
@@ -25,19 +26,13 @@ class KtorClient {
         }
 
         engine {
-            addInterceptor(provideLoggingInterceptor())
+            addInterceptor(LoggingInterceptor().provideLoggingInterceptor())
 
             config {
                 connectTimeout(30, TimeUnit.SECONDS)
                 readTimeout(30, TimeUnit.SECONDS)
                 writeTimeout(30, TimeUnit.SECONDS)
             }
-        }
-    }
-
-    private fun provideLoggingInterceptor(): HttpLoggingInterceptor {
-        return HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BODY
         }
     }
 
