@@ -16,7 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CharacterAdapter(
-    val onItemClick: () -> Unit
+    val onItemClick: (id: Int) -> Unit
 ) : PagingDataAdapter<Character, CharacterAdapter.CharacterViewHolder>(
     diffCallback
 ) {
@@ -39,7 +39,7 @@ class CharacterAdapter(
 
         init {
             itemView.setOnClickListener {
-                onItemClick()
+                onItemClick(getItem(absoluteAdapterPosition)!!.id)
             }
 
             binding.apply {

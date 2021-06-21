@@ -3,12 +3,14 @@ package com.alis.rickandmorty.ui.fragments.characters
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
 import com.alis.rickandmorty.base.BaseFragment
 import com.alis.rickandmorty.databinding.FragmentCharactersBinding
+import com.alis.rickandmorty.models.enums.FromWhere
 import com.alis.rickandmorty.ui.activity.MainActivity
 import com.alis.rickandmorty.ui.adapters.CharacterAdapter
 import com.alis.rickandmorty.ui.adapters.paging.LoadStateAdapter
@@ -55,8 +57,12 @@ class CharactersFragment : BaseFragment<CharactersViewModel, FragmentCharactersB
         }
     }
 
-    private fun onItemClick() {
-        //TODO
+    private fun onItemClick(id: Int) {
+        findNavController().navigate(
+            CharactersFragmentDirections.actionGlobalDetailFragment(
+                fromWhere = FromWhere.CHARACTERS, id = id
+            )
+        )
     }
 
     override fun setupObservers() {

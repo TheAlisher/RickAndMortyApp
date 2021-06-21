@@ -2,6 +2,7 @@ package com.alis.rickandmorty.ui.fragments.episodes
 
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
@@ -11,6 +12,7 @@ import com.alis.rickandmorty.databinding.FragmentEpisodesBinding
 import com.alis.rickandmorty.extensions.gone
 import com.alis.rickandmorty.extensions.showToastShort
 import com.alis.rickandmorty.extensions.visible
+import com.alis.rickandmorty.models.enums.FromWhere
 import com.alis.rickandmorty.ui.activity.MainActivity
 import com.alis.rickandmorty.ui.adapters.EpisodeAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,8 +46,12 @@ class EpisodesFragment : BaseFragment<EpisodesViewModel, FragmentEpisodesBinding
         }
     }
 
-    private fun onItemClick() {
-        //TODO
+    private fun onItemClick(id: Int) {
+        findNavController().navigate(
+            EpisodesFragmentDirections.actionGlobalDetailFragment(
+                fromWhere = FromWhere.EPISODES, id = id
+            )
+        )
     }
 
     override fun setupObservers() {

@@ -33,6 +33,9 @@
         android:label="TODO"
         tools:layout="@layout/fragment_detail">
         <argument
+            android:name="from_where"
+            app:argType="com.alis.rickandmorty.models.enums.FromWhere" />
+        <argument
             android:name="id"
             android:defaultValue="0"
             app:argType="integer" />

@@ -2,6 +2,7 @@ package com.alis.rickandmorty.ui.fragments.locations
 
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
@@ -11,6 +12,7 @@ import com.alis.rickandmorty.databinding.FragmentLocationsBinding
 import com.alis.rickandmorty.extensions.gone
 import com.alis.rickandmorty.extensions.showToastLong
 import com.alis.rickandmorty.extensions.visible
+import com.alis.rickandmorty.models.enums.FromWhere
 import com.alis.rickandmorty.ui.activity.MainActivity
 import com.alis.rickandmorty.ui.adapters.LocationAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,8 +46,12 @@ class LocationsFragment : BaseFragment<LocationsViewModel, FragmentLocationsBind
         }
     }
 
-    private fun onItemClick() {
-        //TODO
+    private fun onItemClick(id: Int) {
+        findNavController().navigate(
+            LocationsFragmentDirections.actionGlobalDetailFragment(
+                fromWhere = FromWhere.LOCATIONS, id = id
+            )
+        )
     }
 
     override fun setupObservers() {
@@ -62,7 +68,7 @@ class LocationsFragment : BaseFragment<LocationsViewModel, FragmentLocationsBind
                         }
                         is Resource.Success -> {
                             progressLocationsLoader.gone()
-                            locationAdapter.setList(it.data!!.body()!!.results)
+                            locationAdapter.submitList(it.data!!.body()!!.results)
                         }
                     }
                 }

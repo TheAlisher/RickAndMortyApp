@@ -2,15 +2,15 @@ package com.alis.rickandmorty.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.alis.rickandmorty.databinding.ItemLocationBinding
 import com.alis.rickandmorty.models.location.Location
 
 class LocationAdapter(
-    val onItemClick: () -> Unit
-) : RecyclerView.Adapter<LocationAdapter.LocationViewHolder>() {
-
-    private var list = mutableListOf<Location>()
+    val onItemClick: (id: Int) -> Unit
+) : ListAdapter<Location, LocationAdapter.LocationViewHolder>(LocationDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationViewHolder {
         return LocationViewHolder(
@@ -21,18 +21,18 @@ class LocationAdapter(
     }
 
     override fun onBindViewHolder(holder: LocationViewHolder, position: Int) {
-        holder.onBind(list[position])
-
-        holder.itemView.setOnClickListener {
-            onItemClick()
-        }
+        holder.onBind(getItem(position))
     }
-
-    override fun getItemCount(): Int = list.size
 
     inner class LocationViewHolder(
         private val binding: ItemLocationBinding
     ) : RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            itemView.setOnClickListener {
+                onItemClick(getItem(absoluteAdapterPosition)!!.id)
+            }
+        }
 
         fun onBind(location: Location) {
             binding.apply {
@@ -43,8 +43,13 @@ class LocationAdapter(
         }
     }
 
-    fun setList(list: MutableList<Location>) {
-        this.list = list
-        notifyDataSetChanged()
+    class LocationDiffCallback : DiffUtil.ItemCallback<Location>() {
+        override fun areItemsTheSame(oldItem: Location, newItem: Location): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: Location, newItem: Location): Boolean {
+            return oldItem == newItem
+        }
     }
 }
