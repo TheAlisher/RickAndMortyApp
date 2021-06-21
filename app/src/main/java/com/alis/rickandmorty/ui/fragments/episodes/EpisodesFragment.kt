@@ -36,7 +36,6 @@ class EpisodesFragment : BaseFragment<EpisodesViewModel, FragmentEpisodesBinding
 
     override fun setupListeners() {
         bottomNavigationItemReselectListener()
-        swipeRefreshListener()
     }
 
     private fun bottomNavigationItemReselectListener() {
