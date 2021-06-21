@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
+    private lateinit var bottomNavigationItemReselectListener: OnBottomNavigationItemReselect
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,10 +35,16 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
-        binding.bottomNavigation.apply {
-            itemIconTintList = null
-            setupWithNavController(navController)
+        setupToolbar()
+        setupBottomNavigation()
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            updateUIComponents(destination.id)
         }
+    }
+
+    private fun setupToolbar() {
+        setSupportActionBar(binding.toolbar)
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_characters,
@@ -45,11 +52,23 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_episodes
             )
         )
-        setSupportActionBar(binding.toolbar)
         setupActionBarWithNavController(navController, appBarConfiguration)
+    }
 
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            updateUIComponents(destination.id)
+    private fun setupBottomNavigation() {
+        binding.bottomNavigation.apply {
+            itemIconTintList = null
+            setupWithNavController(navController)
+
+            setOnNavigationItemReselectedListener {
+                when (it.itemId) {
+                    R.id.navigation_characters,
+                    R.id.navigation_locations,
+                    R.id.navigation_episodes -> {
+                        bottomNavigationItemReselectListener.onItemReselect()
+                    }
+                }
+            }
         }
     }
 
@@ -71,5 +90,13 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
         return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
+    }
+
+    fun interface OnBottomNavigationItemReselect {
+        fun onItemReselect()
+    }
+
+    fun setOnBottomNavigationItemReselectListener(bottomNavigationItemReselectListener: OnBottomNavigationItemReselect) {
+        this.bottomNavigationItemReselectListener = bottomNavigationItemReselectListener
     }
 }

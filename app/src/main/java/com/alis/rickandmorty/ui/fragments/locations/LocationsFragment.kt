@@ -11,6 +11,7 @@ import com.alis.rickandmorty.databinding.FragmentLocationsBinding
 import com.alis.rickandmorty.extensions.gone
 import com.alis.rickandmorty.extensions.showToastLong
 import com.alis.rickandmorty.extensions.visible
+import com.alis.rickandmorty.ui.activity.MainActivity
 import com.alis.rickandmorty.ui.adapters.LocationAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -30,6 +31,16 @@ class LocationsFragment : BaseFragment<LocationsViewModel, FragmentLocationsBind
         binding.recyclerLocations.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = locationAdapter
+        }
+    }
+
+    override fun setupListeners() {
+        bottomNavigationItemReselectListener()
+    }
+
+    private fun bottomNavigationItemReselectListener() {
+        (requireActivity() as MainActivity).setOnBottomNavigationItemReselectListener {
+            binding.recyclerLocations.smoothScrollToPosition(0)
         }
     }
 

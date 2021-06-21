@@ -9,6 +9,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
 import com.alis.rickandmorty.base.BaseFragment
 import com.alis.rickandmorty.databinding.FragmentCharactersBinding
+import com.alis.rickandmorty.ui.activity.MainActivity
 import com.alis.rickandmorty.ui.adapters.CharacterAdapter
 import com.alis.rickandmorty.ui.adapters.paging.LoadStateAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,6 +42,16 @@ class CharactersFragment : BaseFragment<CharactersViewModel, FragmentCharactersB
                 recyclerCharacters.isVisible = loadStates.refresh is LoadState.NotLoading
                 progressCharactersLoader.isVisible = loadStates.refresh is LoadState.Loading
             }
+        }
+    }
+
+    override fun setupListeners() {
+        bottomNavigationItemReselectListener()
+    }
+
+    private fun bottomNavigationItemReselectListener() {
+        (requireActivity() as MainActivity).setOnBottomNavigationItemReselectListener {
+            binding.recyclerCharacters.smoothScrollToPosition(0)
         }
     }
 

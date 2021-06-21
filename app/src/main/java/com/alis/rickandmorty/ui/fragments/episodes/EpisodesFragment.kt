@@ -11,6 +11,7 @@ import com.alis.rickandmorty.databinding.FragmentEpisodesBinding
 import com.alis.rickandmorty.extensions.gone
 import com.alis.rickandmorty.extensions.showToastShort
 import com.alis.rickandmorty.extensions.visible
+import com.alis.rickandmorty.ui.activity.MainActivity
 import com.alis.rickandmorty.ui.adapters.EpisodeAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -30,6 +31,16 @@ class EpisodesFragment : BaseFragment<EpisodesViewModel, FragmentEpisodesBinding
         binding.recyclerEpisode.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = episodeAdapter
+        }
+    }
+
+    override fun setupListeners() {
+        bottomNavigationItemReselectListener()
+    }
+
+    private fun bottomNavigationItemReselectListener() {
+        (requireActivity() as MainActivity).setOnBottomNavigationItemReselectListener {
+            binding.recyclerEpisode.smoothScrollToPosition(0)
         }
     }
 
