@@ -56,6 +56,7 @@ class CharactersFragment : BaseFragment<CharactersViewModel, FragmentCharactersB
     }
 
     private fun onItemClick() {
+        //TODO
     }
 
     override fun setupObservers() {

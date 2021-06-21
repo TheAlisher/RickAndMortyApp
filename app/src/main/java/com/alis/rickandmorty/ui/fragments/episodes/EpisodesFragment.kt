@@ -28,7 +28,7 @@ class EpisodesFragment : BaseFragment<EpisodesViewModel, FragmentEpisodesBinding
     private val episodeAdapter = EpisodeAdapter(this::onItemClick)
 
     override fun setupViews() {
-        binding.recyclerEpisode.apply {
+        binding.recyclerEpisodes.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = episodeAdapter
         }
@@ -36,11 +36,12 @@ class EpisodesFragment : BaseFragment<EpisodesViewModel, FragmentEpisodesBinding
 
     override fun setupListeners() {
         bottomNavigationItemReselectListener()
+        swipeRefreshListener()
     }
 
     private fun bottomNavigationItemReselectListener() {
         (requireActivity() as MainActivity).setOnBottomNavigationItemReselectListener {
-            binding.recyclerEpisode.smoothScrollToPosition(0)
+            binding.recyclerEpisodes.smoothScrollToPosition(0)
         }
     }
 
@@ -51,17 +52,19 @@ class EpisodesFragment : BaseFragment<EpisodesViewModel, FragmentEpisodesBinding
     override fun setupObservers() {
         lifecycleScope.launch {
             viewModel.fetchEpisodes().collect {
-                when (it) {
-                    is Resource.Loading -> {
-                        binding.progressEpisodesLoader.visible()
-                    }
-                    is Resource.Error -> {
-                        binding.progressEpisodesLoader.gone()
-                        showToastShort(it.message.toString())
-                    }
-                    is Resource.Success -> {
-                        binding.progressEpisodesLoader.gone()
-                        episodeAdapter.submitList(it.data?.results!!)
+                binding.apply {
+                    when (it) {
+                        is Resource.Loading -> {
+                            progressEpisodesLoader.visible()
+                        }
+                        is Resource.Error -> {
+                            progressEpisodesLoader.gone()
+                            showToastShort(it.message.toString())
+                        }
+                        is Resource.Success -> {
+                            progressEpisodesLoader.gone()
+                            episodeAdapter.submitList(it.data?.results!!)
+                        }
                     }
                 }
             }
