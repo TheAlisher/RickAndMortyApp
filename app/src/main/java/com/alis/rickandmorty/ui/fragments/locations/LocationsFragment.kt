@@ -46,10 +46,12 @@ class LocationsFragment : BaseFragment<LocationsViewModel, FragmentLocationsBind
         }
     }
 
-    private fun onItemClick(id: Int) {
+    private fun onItemClick(name: String, id: Int) {
         findNavController().navigate(
             LocationsFragmentDirections.actionGlobalDetailFragment(
-                fromWhere = FromWhere.LOCATIONS, id = id
+                fromWhere = FromWhere.LOCATIONS,
+                name = "${getString(R.string.fragment_label_detail_location)} $name",
+                id = id
             )
         )
     }

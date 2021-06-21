@@ -57,10 +57,12 @@ class CharactersFragment : BaseFragment<CharactersViewModel, FragmentCharactersB
         }
     }
 
-    private fun onItemClick(id: Int) {
+    private fun onItemClick(name: String, id: Int) {
         findNavController().navigate(
             CharactersFragmentDirections.actionGlobalDetailFragment(
-                fromWhere = FromWhere.CHARACTERS, id = id
+                fromWhere = FromWhere.CHARACTERS,
+                name = "${getString(R.string.fragment_label_detail_character)} $name",
+                id = id
             )
         )
     }

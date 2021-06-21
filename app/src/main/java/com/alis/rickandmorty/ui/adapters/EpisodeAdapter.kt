@@ -9,7 +9,7 @@ import com.alis.rickandmorty.databinding.ItemEpisodeBinding
 import com.alis.rickandmorty.models.episode.Episode
 
 class EpisodeAdapter(
-    val onItemClick: (id: Int) -> Unit
+    val onItemClick: (name: String, id: Int) -> Unit
 ) : ListAdapter<Episode, EpisodeAdapter.EpisodeViewHolder>(EpisodeDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EpisodeViewHolder {
@@ -30,7 +30,9 @@ class EpisodeAdapter(
 
         init {
             itemView.setOnClickListener {
-                onItemClick(getItem(absoluteAdapterPosition)!!.id)
+                getItem(absoluteAdapterPosition)!!.apply {
+                    onItemClick(name, id)
+                }
             }
         }
 

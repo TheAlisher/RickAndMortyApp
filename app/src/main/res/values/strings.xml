@@ -17,11 +17,10 @@
     <string name="fragment_label_characters">Персонажи</string>
     <string name="fragment_label_locations">Локации</string>
     <string name="fragment_label_episodes">Эпизоды</string>
-    <!--endregion-->
-
-
-    <!--region ItemLoadStateFooterView-->
-    <string name="retry">Повторить</string>
+    <string name="fragment_label_search">Поиск</string>
+    <string name="fragment_label_detail_character">Персонаж:</string>
+    <string name="fragment_label_detail_location">Локация:</string>
+    <string name="fragment_label_detail_episode">Эпизод:</string>
     <!--endregion-->
 
 
@@ -67,6 +66,16 @@
     <!--endregion-->
 
 
+    <!--endregion-->
+
+
+    <!--region Search-->
+
+    <!--endregion-->
+
+
+    <!--region ItemLoadStateFooterView-->
+    <string name="retry">Повторить</string>
     <!--endregion-->
 
 

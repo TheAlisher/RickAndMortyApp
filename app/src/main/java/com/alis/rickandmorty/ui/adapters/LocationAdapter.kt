@@ -9,7 +9,7 @@ import com.alis.rickandmorty.databinding.ItemLocationBinding
 import com.alis.rickandmorty.models.location.Location
 
 class LocationAdapter(
-    val onItemClick: (id: Int) -> Unit
+    val onItemClick: (name: String, id: Int) -> Unit
 ) : ListAdapter<Location, LocationAdapter.LocationViewHolder>(LocationDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationViewHolder {
@@ -30,7 +30,9 @@ class LocationAdapter(
 
         init {
             itemView.setOnClickListener {
-                onItemClick(getItem(absoluteAdapterPosition)!!.id)
+                getItem(absoluteAdapterPosition)!!.apply {
+                    onItemClick(name, id)
+                }
             }
         }
 

@@ -73,6 +73,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateUIComponents(id: Int) {
         binding.apply {
+
+            // region Toolbar
+            when (id) {
+                R.id.detailFragment -> {
+                    //TODO show toolbar when toolbar hided WHEN SCROLL
+                }
+            }
+            // endregion
+
             // region BottomNavigation
             when (id) {
                 R.id.detailFragment -> {

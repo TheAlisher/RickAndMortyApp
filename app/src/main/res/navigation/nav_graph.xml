@@ -30,11 +30,14 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.alis.rickandmorty.ui.fragments.detail.DetailFragment"
-        android:label="TODO"
+        android:label="{name}"
         tools:layout="@layout/fragment_detail">
         <argument
             android:name="from_where"
             app:argType="com.alis.rickandmorty.models.enums.FromWhere" />
+        <argument
+            android:name="name"
+            app:argType="string" />
         <argument
             android:name="id"
             android:defaultValue="0"
