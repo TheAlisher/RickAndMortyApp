@@ -20,6 +20,11 @@
     <!--endregion-->
 
 
+    <!--region ItemLoadStateFooterView-->
+    <string name="retry">Повторить</string>
+    <!--endregion-->
+
+
     <!--region Character-->
 
 
