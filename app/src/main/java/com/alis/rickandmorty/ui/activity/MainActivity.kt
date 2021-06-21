@@ -48,16 +48,18 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            updateUIBottomNavigation(destination.id)
+            updateUIComponents(destination.id)
         }
     }
 
-    private fun updateUIBottomNavigation(id: Int) {
+    private fun updateUIComponents(id: Int) {
+        // region BottomNavigation
         when (id) {
             R.id.detailFragment -> {
                 binding.bottomNavigation.gone()
             }
         }
+        // endregion
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
