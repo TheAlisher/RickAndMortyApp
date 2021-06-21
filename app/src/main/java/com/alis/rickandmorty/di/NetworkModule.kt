@@ -8,7 +8,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.ktor.client.*
-import retrofit2.Retrofit
 import javax.inject.Singleton
 
 @Module
@@ -34,6 +33,12 @@ object NetworkModule {
     fun provideLocationApiService(
         retrofitClient: RetrofitClient
     ) = retrofitClient.provideLocationApiService()
+
+    @Singleton
+    @Provides
+    fun provideEpisodeApiService(
+        retrofitClient: RetrofitClient
+    ) = retrofitClient.provideEpisodeApiService()
 
     @Singleton
     @Provides

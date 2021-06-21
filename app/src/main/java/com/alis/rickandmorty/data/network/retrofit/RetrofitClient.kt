@@ -3,6 +3,7 @@ package com.alis.rickandmorty.data.network.retrofit
 import com.alis.rickandmorty.constants.Constants
 import com.alis.rickandmorty.data.network.okhttp.interceptors.LoggingInterceptor
 import com.alis.rickandmorty.data.network.retrofit.apiservices.CharacterApiService
+import com.alis.rickandmorty.data.network.retrofit.apiservices.EpisodeApiService
 import com.alis.rickandmorty.data.network.retrofit.apiservices.LocationApiService
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -30,4 +31,7 @@ class RetrofitClient {
 
     fun provideLocationApiService(): LocationApiService = provideRetrofit
         .create(LocationApiService::class.java)
+
+    fun provideEpisodeApiService(): EpisodeApiService = provideRetrofit
+        .create(EpisodeApiService::class.java)
 }
