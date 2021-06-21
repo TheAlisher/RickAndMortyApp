@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_episodes
             )
         )
+        setSupportActionBar(binding.toolbar)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
