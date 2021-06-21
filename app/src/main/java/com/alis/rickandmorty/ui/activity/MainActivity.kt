@@ -7,13 +7,11 @@ import android.view.MenuItem
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.onNavDestinationSelected
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import androidx.navigation.ui.*
 import com.alis.rickandmorty.R
 import com.alis.rickandmorty.databinding.ActivityMainBinding
 import com.alis.rickandmorty.extensions.gone
+import com.alis.rickandmorty.extensions.visible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,6 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
+    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var bottomNavigationItemReselectListener: OnBottomNavigationItemReselect
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupToolbar() {
         setSupportActionBar(binding.toolbar)
-        val appBarConfiguration = AppBarConfiguration(
+        appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_characters,
                 R.id.navigation_locations,
@@ -73,13 +72,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateUIComponents(id: Int) {
-        // region BottomNavigation
-        when (id) {
-            R.id.detailFragment -> {
-                binding.bottomNavigation.gone()
+        binding.apply {
+            // region BottomNavigation
+            when (id) {
+                R.id.detailFragment -> {
+                    bottomNavigation.gone()
+                }
+                else -> {
+                    bottomNavigation.visible()
+                }
             }
+            // endregion
         }
-        // endregion
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment)
+        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
