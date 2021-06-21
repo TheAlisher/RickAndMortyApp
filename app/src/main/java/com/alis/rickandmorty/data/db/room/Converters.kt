@@ -6,7 +6,6 @@ import com.alis.rickandmorty.models.character.SimpleLocation
 import com.alis.rickandmorty.models.episode.Episode
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import java.util.*
 
 class Converters {
 
@@ -18,16 +17,6 @@ class Converters {
 
     private inline fun <reified T> toJson(generic: T): String? {
         return Gson().toJson(generic, typeToken<T>())
-    }
-
-    @TypeConverter
-    fun fromTimestamp(value: Long?): Date? {
-        return value?.let { Date(it) }
-    }
-
-    @TypeConverter
-    fun dateToTimestamp(date: Date?): Long? {
-        return date?.time
     }
 
     @TypeConverter
