@@ -3,7 +3,7 @@ package com.alis.rickandmorty.data.repositories.pagingsources.character
 import android.net.Uri
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.alis.rickandmorty.data.network.retrofit.CharacterApiService
+import com.alis.rickandmorty.data.network.retrofit.apiservices.CharacterApiService
 import com.alis.rickandmorty.models.character.Character
 import retrofit2.HttpException
 import java.io.IOException

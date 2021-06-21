@@ -1,8 +1,7 @@
 package com.alis.rickandmorty.data.repositories
 
 import androidx.lifecycle.liveData
-import com.alis.rickandmorty.data.network.Resource
-import com.alis.rickandmorty.data.network.retrofit.LocationApiService
+import com.alis.rickandmorty.data.network.retrofit.apiservices.LocationApiService
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
 

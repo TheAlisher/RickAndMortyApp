@@ -1,4 +1,4 @@
-package com.alis.rickandmorty.data.network.retrofit
+package com.alis.rickandmorty.data.network.retrofit.apiservices
 
 import com.alis.rickandmorty.models.common.RickAndMortyResponse
 import com.alis.rickandmorty.models.location.Location

@@ -3,7 +3,7 @@ package com.alis.rickandmorty.data.repositories
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.alis.rickandmorty.data.network.retrofit.CharacterApiService
+import com.alis.rickandmorty.data.network.retrofit.apiservices.CharacterApiService
 import com.alis.rickandmorty.data.repositories.pagingsources.character.CharacterPagingSource
 import com.alis.rickandmorty.models.character.Character
 import kotlinx.coroutines.flow.Flow

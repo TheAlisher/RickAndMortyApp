@@ -2,6 +2,8 @@ package com.alis.rickandmorty.data.network.retrofit
 
 import com.alis.rickandmorty.constants.Constants
 import com.alis.rickandmorty.data.network.okhttp.interceptors.LoggingInterceptor
+import com.alis.rickandmorty.data.network.retrofit.apiservices.CharacterApiService
+import com.alis.rickandmorty.data.network.retrofit.apiservices.LocationApiService
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
