@@ -8,7 +8,7 @@ import com.alis.rickandmorty.models.character.Character
 import retrofit2.HttpException
 import java.io.IOException
 
-private const val CHARACTER_STARTING_PAGE_INDEX = 30
+private const val CHARACTER_STARTING_PAGE_INDEX = 1
 
 class CharacterPagingSource(
     private val characterApiService: CharacterApiService,
