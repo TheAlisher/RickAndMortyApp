@@ -1,17 +1,17 @@
 package com.alis.rickandmorty.base
 
-import com.alis.rickandmorty.data.network._Resource
+import com.alis.rickandmorty.data.resource.Resource
 import kotlinx.coroutines.flow.flow
 
 abstract class BaseRepository {
 
     protected fun <T> doRequest(request: suspend () -> T) = flow {
-        emit(_Resource.Loading())
+        emit(Resource.Loading())
         try {
-            emit(_Resource.Success(data = request()))
+            emit(Resource.Success(data = request()))
         } catch (ioException: Exception) {
             emit(
-                _Resource.Error(
+                Resource.Error(
                     data = null, message = ioException.localizedMessage ?: "Error Occurred!"
                 )
             )
