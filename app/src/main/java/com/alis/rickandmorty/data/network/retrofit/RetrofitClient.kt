@@ -1,6 +1,6 @@
 package com.alis.rickandmorty.data.network.retrofit
 
-import com.alis.rickandmorty.constants.NetworkConstants
+import com.alis.rickandmorty.constants.Constants
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -24,7 +24,7 @@ class RetrofitClient {
     }
 
     private val provideRetrofit = Retrofit.Builder()
-        .baseUrl(NetworkConstants.BASE_URL)
+        .baseUrl(Constants.BASE_URL)
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()

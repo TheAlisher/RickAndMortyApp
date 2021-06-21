@@ -1,6 +1,6 @@
 package com.alis.rickandmorty.data.network.ktor
 
-import com.alis.rickandmorty.constants.NetworkConstants
+import com.alis.rickandmorty.constants.Constants
 import io.ktor.client.*
 import io.ktor.client.engine.okhttp.*
 import io.ktor.client.features.*
@@ -14,7 +14,7 @@ class KtorClient {
 
     private val client = HttpClient(OkHttp) {
         defaultRequest {
-            host = NetworkConstants.HOST
+            host = Constants.HOST
             url {
                 protocol = URLProtocol.HTTPS
             }
