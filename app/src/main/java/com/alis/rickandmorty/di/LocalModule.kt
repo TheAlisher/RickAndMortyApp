@@ -4,7 +4,6 @@ import android.content.Context
 import com.alis.rickandmorty.data.db.room.RoomClient
 import com.alis.rickandmorty.data.db.room.RoomDatabase
 import com.alis.rickandmorty.data.db.room.daos.CharacterDao
-import com.alis.rickandmorty.datastore.DataStorePreferences
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,10 +24,4 @@ object LocalModule {
     fun provideCharacterDao(roomDatabase: RoomDatabase): CharacterDao {
         return RoomClient().provideCharacterDao(roomDatabase)
     }
-
-    @Singleton
-    @Provides
-    fun provideDataStorePreferences(
-        @ApplicationContext context: Context
-    ) = DataStorePreferences(context)
 }
