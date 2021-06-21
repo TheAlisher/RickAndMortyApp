@@ -7,7 +7,7 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
-import com.alis.rickandmorty.base.BaseFragmentWithViewModel
+import com.alis.rickandmorty.base.BaseFragment
 import com.alis.rickandmorty.databinding.FragmentCharactersBinding
 import com.alis.rickandmorty.ui.adapters.CharacterAdapter
 import com.alis.rickandmorty.ui.adapters.paging.LoadStateAdapter
@@ -16,10 +16,9 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
-class CharactersFragment :
-    BaseFragmentWithViewModel<CharactersViewModel, FragmentCharactersBinding>(
-        R.layout.fragment_characters
-    ) {
+class CharactersFragment : BaseFragment<CharactersViewModel, FragmentCharactersBinding>(
+    R.layout.fragment_characters
+) {
 
     override val viewModel: CharactersViewModel by viewModels()
     override val binding: FragmentCharactersBinding by viewBinding()
@@ -43,10 +42,6 @@ class CharactersFragment :
                 progressCharactersLoader.isVisible = loadStates.refresh is LoadState.Loading
             }
         }
-    }
-
-    override fun setupListeners() {
-
     }
 
     private fun onItemClick() {

@@ -5,7 +5,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
-import com.alis.rickandmorty.base.BaseFragmentWithViewModel
+import com.alis.rickandmorty.base.BaseFragment
 import com.alis.rickandmorty.data.network._Resource
 import com.alis.rickandmorty.databinding.FragmentEpisodesBinding
 import com.alis.rickandmorty.extensions.gone
@@ -17,7 +17,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class EpisodesFragment : BaseFragmentWithViewModel<EpisodesViewModel, FragmentEpisodesBinding>(
+class EpisodesFragment : BaseFragment<EpisodesViewModel, FragmentEpisodesBinding>(
     R.layout.fragment_episodes
 ) {
 
@@ -31,10 +31,6 @@ class EpisodesFragment : BaseFragmentWithViewModel<EpisodesViewModel, FragmentEp
             layoutManager = LinearLayoutManager(context)
             adapter = episodeAdapter
         }
-    }
-
-    override fun setupListeners() {
-
     }
 
     private fun onItemClick() {
