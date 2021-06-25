@@ -10,9 +10,6 @@ plugins {
 
     // Hilt
     id 'dagger.hilt.android.plugin'
-
-    // Realm
-    id 'realm-android'
 }
 
 android {

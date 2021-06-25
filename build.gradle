@@ -3,7 +3,6 @@ buildscript {
         kotlin_version = "1.5.10"
         nav_version = "2.3.5"
         hilt_version = '2.37'
-        realm_version = '10.3.1'
     }
     repositories {
         google()
@@ -18,9 +17,6 @@ buildscript {
 
         // Hilt
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
-
-        // Realm
-        classpath "io.realm:realm-gradle-plugin:$realm_version"
     }
 }
 
