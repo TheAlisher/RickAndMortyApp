@@ -2,15 +2,15 @@ package com.alis.rickandmorty.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.alis.rickandmorty.databinding.ItemLocationBinding
 import com.alis.rickandmorty.models.location.Location
 
 class LocationAdapter(
     val onItemClick: (name: String, id: Int) -> Unit
-) : ListAdapter<Location, LocationAdapter.LocationViewHolder>(LocationDiffCallback()) {
+) : PagingDataAdapter<Location, LocationAdapter.LocationViewHolder>(LocationDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationViewHolder {
         return LocationViewHolder(
@@ -21,7 +21,7 @@ class LocationAdapter(
     }
 
     override fun onBindViewHolder(holder: LocationViewHolder, position: Int) {
-        holder.onBind(getItem(position))
+        getItem(position)?.let { holder.onBind(it) }
     }
 
     inner class LocationViewHolder(

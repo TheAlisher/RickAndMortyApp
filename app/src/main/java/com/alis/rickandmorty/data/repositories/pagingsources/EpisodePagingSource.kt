@@ -3,31 +3,31 @@ package com.alis.rickandmorty.data.repositories.pagingsources
 import android.net.Uri
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.alis.rickandmorty.data.network.retrofit.apiservices.CharacterApiService
-import com.alis.rickandmorty.models.character.Character
+import com.alis.rickandmorty.data.network.retrofit.apiservices.EpisodeApiService
+import com.alis.rickandmorty.models.episode.Episode
 import retrofit2.HttpException
 import java.io.IOException
 
-private const val CHARACTER_STARTING_PAGE_INDEX = 1
+private const val EPISODE_STARTING_PAGE_INDEX = 1
 
-class CharacterPagingSource(
-    private val service: CharacterApiService,
-) : PagingSource<Int, Character>() {
+class EpisodePagingSource(
+    private val service: EpisodeApiService
+) : PagingSource<Int, Episode>() {
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Character> {
-        val position = params.key ?: CHARACTER_STARTING_PAGE_INDEX
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Episode> {
+        val position = params.key ?: EPISODE_STARTING_PAGE_INDEX
         return try {
-            val response = service.fetchCharacters(position)
-            val characters = response.body()
-            val next = characters?.info?.next
+            val response = service.fetchEpisodes(position)
+            val episodes = response.body()
+            val next = episodes?.info?.next
             val nextPageNumber = if (next == null) {
                 null
             } else {
-                Uri.parse(characters.info.next).getQueryParameter("page")!!.toInt()
+                Uri.parse(episodes.info.next).getQueryParameter("page")!!.toInt()
             }
 
             LoadResult.Page(
-                data = characters!!.results,
+                data = episodes!!.results,
                 prevKey = null,
                 nextKey = nextPageNumber
             )
@@ -38,7 +38,7 @@ class CharacterPagingSource(
         }
     }
 
-    override fun getRefreshKey(state: PagingState<Int, Character>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, Episode>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             val anchorPage = state.closestPageToPosition(anchorPosition)
             anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
