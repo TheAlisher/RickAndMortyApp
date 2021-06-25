@@ -11,13 +11,13 @@ import java.io.IOException
 private const val CHARACTER_STARTING_PAGE_INDEX = 1
 
 class CharacterPagingSource(
-    private val characterApiService: CharacterApiService,
+    private val service: CharacterApiService,
 ) : PagingSource<Int, Character>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Character> {
         val position = params.key ?: CHARACTER_STARTING_PAGE_INDEX
         return try {
-            val response = characterApiService.fetchCharacters(position)
+            val response = service.fetchCharacters(position)
             val repos = response.body()
             val next = repos?.info?.next
             val nextPageNumber = if (next == null) {
