@@ -77,7 +77,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_item_character_status_and_species" />
 
-        <TextView
+        <com.alis.rickandmorty.ui.customviews.ClickableTextView
             android:id="@+id/text_item_character_last_known_location_data"
             style="@style/TextItemCharacterDescription"
             android:layout_width="0dp"
@@ -99,7 +99,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_item_character_last_known_location_data" />
 
-        <TextView
+        <com.alis.rickandmorty.ui.customviews.ClickableTextView
             android:id="@+id/text_item_character_first_seen_in_data"
             style="@style/TextItemCharacterDescription"
             android:layout_width="0dp"
