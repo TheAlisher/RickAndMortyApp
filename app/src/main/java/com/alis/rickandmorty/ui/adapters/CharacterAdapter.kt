@@ -3,7 +3,6 @@ package com.alis.rickandmorty.ui.adapters
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagingData
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -11,9 +10,6 @@ import coil.load
 import com.alis.rickandmorty.R
 import com.alis.rickandmorty.databinding.ItemCharacterBinding
 import com.alis.rickandmorty.models.character.Character
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class CharacterAdapter(
     val onItemClick: (name: String, id: Int) -> Unit
@@ -43,14 +39,13 @@ class CharacterAdapter(
                     onItemClick(name, id)
                 }
             }
+            itemView.setOnLongClickListener {
+                Log.d("anime", "itemView")
+                //TODO
+                true
+            }
 
             binding.apply {
-
-                imageItemCharacter.setOnLongClickListener {
-                    Log.d("anime", "imageItemCharacter")
-                    // TODO
-                    true
-                }
 
                 textItemCharacterLastKnownLocationData.setOnClickListener {
                     Log.d("anime", "textItemCharacterLastKnownLocationData")
