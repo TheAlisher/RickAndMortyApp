@@ -21,7 +21,6 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                android:animateLayoutChanges="true"
                 android:background="@color/CyanBlue"
                 app:menu="@menu/filter_menu"
                 app:titleTextColor="@color/White"
