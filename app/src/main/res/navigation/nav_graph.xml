@@ -39,6 +39,12 @@
     </fragment>
 
     <fragment
+        android:id="@+id/navigation_search"
+        android:name="com.alis.rickandmorty.ui.fragments.search.SearchFragment"
+        android:label="@string/fragment_label_search"
+        tools:layout="@layout/fragment_search" />
+
+    <fragment
         android:id="@+id/charactersDetailFragment"
         android:name="com.alis.rickandmorty.ui.fragments.characters.detail.CharactersDetailFragment"
         android:label="{label}"

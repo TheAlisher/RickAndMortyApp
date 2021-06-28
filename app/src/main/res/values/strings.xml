@@ -9,6 +9,7 @@
     <string name="item_characters">Characters</string>
     <string name="item_locations">Locations</string>
     <string name="item_episodes">Episodes</string>
+    <string name="item_search">Search</string>
     <string name="item_filter">Filter</string>
     <!--endregion-->
 
