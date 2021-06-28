@@ -49,6 +49,7 @@
         android:layout_height="wrap_content"
         android:background="@color/CyanBlue"
         app:itemTextColor="@drawable/selector_bottom_navigation_item"
+        app:labelVisibilityMode="labeled"
         app:layout_anchor="@id/nav_host_fragment"
         app:layout_anchorGravity="bottom"
         app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
