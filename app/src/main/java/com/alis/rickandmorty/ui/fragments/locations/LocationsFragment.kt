@@ -12,7 +12,6 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
 import com.alis.rickandmorty.base.BaseFragmentWithMenu
 import com.alis.rickandmorty.databinding.FragmentLocationsBinding
-import com.alis.rickandmorty.models.enums.FromWhere
 import com.alis.rickandmorty.ui.activity.MainActivity
 import com.alis.rickandmorty.ui.adapters.LocationAdapter
 import com.alis.rickandmorty.ui.adapters.paging.LoadStateAdapter
@@ -61,9 +60,8 @@ class LocationsFragment : BaseFragmentWithMenu<LocationsViewModel, FragmentLocat
 
     private fun onItemClick(name: String, id: Int) {
         findNavController().navigate(
-            LocationsFragmentDirections.actionGlobalDetailFragment(
-                fromWhere = FromWhere.LOCATIONS,
-                name = "${getString(R.string.fragment_label_detail_location)} $name",
+            LocationsFragmentDirections.actionNavigationLocationsToLocationDetailFragment(
+                label = "${getString(R.string.fragment_label_detail_location)} $name",
                 id = id
             )
         )

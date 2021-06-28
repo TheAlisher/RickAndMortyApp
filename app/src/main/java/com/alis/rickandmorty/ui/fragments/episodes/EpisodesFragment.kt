@@ -12,7 +12,6 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
 import com.alis.rickandmorty.base.BaseFragmentWithMenu
 import com.alis.rickandmorty.databinding.FragmentEpisodesBinding
-import com.alis.rickandmorty.models.enums.FromWhere
 import com.alis.rickandmorty.ui.activity.MainActivity
 import com.alis.rickandmorty.ui.adapters.EpisodeAdapter
 import com.alis.rickandmorty.ui.adapters.paging.LoadStateAdapter
@@ -61,9 +60,8 @@ class EpisodesFragment : BaseFragmentWithMenu<EpisodesViewModel, FragmentEpisode
 
     private fun onItemClick(name: String, id: Int) {
         findNavController().navigate(
-            EpisodesFragmentDirections.actionGlobalDetailFragment(
-                fromWhere = FromWhere.EPISODES,
-                name = "${getString(R.string.fragment_label_detail_episode)} $name",
+            EpisodesFragmentDirections.actionNavigationEpisodesToEpisodesDetailFragment(
+                label = "${getString(R.string.fragment_label_detail_episode)} $name",
                 id = id
             )
         )

@@ -12,7 +12,6 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
 import com.alis.rickandmorty.base.BaseFragmentWithMenu
 import com.alis.rickandmorty.databinding.FragmentCharactersBinding
-import com.alis.rickandmorty.models.enums.FromWhere
 import com.alis.rickandmorty.ui.activity.MainActivity
 import com.alis.rickandmorty.ui.adapters.CharacterAdapter
 import com.alis.rickandmorty.ui.adapters.paging.LoadStateAdapter
@@ -61,9 +60,8 @@ class CharactersFragment : BaseFragmentWithMenu<CharactersViewModel, FragmentCha
 
     private fun onItemClick(name: String, id: Int) {
         findNavController().navigate(
-            CharactersFragmentDirections.actionGlobalDetailFragment(
-                fromWhere = FromWhere.CHARACTERS,
-                name = "${getString(R.string.fragment_label_detail_character)} $name",
+            CharactersFragmentDirections.actionNavigationCharactersToCharactersDetailFragment(
+                label = "${getString(R.string.fragment_label_detail_character)} $name",
                 id = id
             )
         )
