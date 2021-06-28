@@ -7,6 +7,11 @@
         <item name="android:background">@color/VeryVeryDarkMostlyBlackBlue</item>
     </style>
 
+    <style name="BaseProgressBar">
+        <item name="android:indeterminateTint">@color/White</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
     <style name="BaseItemMaterialCardView">
         <item name="android:layout_margin">10dp</item>
         <item name="android:foreground">?selectableItemBackground</item>
