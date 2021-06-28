@@ -30,5 +30,7 @@ data class Character(
     @SerializedName("url")
     val url: String,
     @SerializedName("created")
-    val created: String
+    val created: String,
+
+    var firstSeenIn: String? = null
 )

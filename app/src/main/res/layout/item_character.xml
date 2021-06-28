@@ -99,6 +99,16 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_item_character_last_known_location_data" />
 
+        <ProgressBar
+            android:id="@+id/progressBar_character_first_seen_in"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:indeterminateTint="@color/White"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/guideline_item_character_content_end_image"
+            app:layout_constraintTop_toBottomOf="@id/text_item_character_first_seen_in" />
+
         <com.alis.rickandmorty.ui.customviews.ClickableTextView
             android:id="@+id/text_item_character_first_seen_in_data"
             style="@style/TextItemCharacterDescription"

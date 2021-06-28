@@ -3,6 +3,7 @@ package com.alis.rickandmorty.ui.adapters
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +14,8 @@ import com.alis.rickandmorty.models.character.Character
 
 class CharacterAdapter(
     val onItemClick: (name: String, id: Int) -> Unit,
-    val onItemLongClick: (image: String) -> Unit
+    val onItemLongClick: (image: String) -> Unit,
+    val fetchFirstSeenIn: (position: Int, episodeUrl: String) -> Unit
 ) : PagingDataAdapter<Character, CharacterAdapter.CharacterViewHolder>(
     diffCallback
 ) {
@@ -28,6 +30,11 @@ class CharacterAdapter(
 
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
         getItem(position)?.let { holder.onBind(it) }
+    }
+
+    fun setFirstSeenIn(position: Int, firstSeenIn: String) {
+        getItem(position)?.firstSeenIn = firstSeenIn
+        notifyItemChanged(position)
     }
 
     inner class CharacterViewHolder(
@@ -79,7 +86,16 @@ class CharacterAdapter(
                         R.string.hyphen, character.status, character.species
                     )
                 textItemCharacterLastKnownLocationData.text = character.location.name
-                textItemCharacterFirstSeenInData.text = "TODO" //TODO
+
+                character.apply {
+                    val firstSeenInIsEmpty = firstSeenIn == null
+                    progressBarCharacterFirstSeenIn.isVisible = firstSeenInIsEmpty
+                    if (firstSeenInIsEmpty) {
+                        fetchFirstSeenIn(absoluteAdapterPosition, episode.first())
+                    } else {
+                        textItemCharacterFirstSeenInData.text = firstSeenIn
+                    }
+                }
             }
         }
     }

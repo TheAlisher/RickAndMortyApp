@@ -1,5 +1,6 @@
 package com.alis.rickandmorty.ui.fragments.characters
 
+import android.net.Uri
 import android.view.Menu
 import android.view.MenuInflater
 import androidx.core.view.isVisible
@@ -11,12 +12,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
 import com.alis.rickandmorty.base.BaseFragmentWithMenu
+import com.alis.rickandmorty.data.resource.Resource
 import com.alis.rickandmorty.databinding.FragmentCharactersBinding
 import com.alis.rickandmorty.ui.activity.MainActivity
 import com.alis.rickandmorty.ui.adapters.CharacterAdapter
 import com.alis.rickandmorty.ui.adapters.paging.LoadStateAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
@@ -28,7 +31,7 @@ class CharactersFragment : BaseFragmentWithMenu<CharactersViewModel, FragmentCha
     override val binding by viewBinding(FragmentCharactersBinding::bind)
 
     private val characterAdapter = CharacterAdapter(
-        this::onItemClick, this::onItemLongClick
+        this::onItemClick, this::onItemLongClick, this::fetchFirstSeenIn
     )
     private val loadStateAdapter = LoadStateAdapter {
         characterAdapter.retry()
@@ -75,6 +78,25 @@ class CharactersFragment : BaseFragmentWithMenu<CharactersViewModel, FragmentCha
                 image = image
             )
         )
+    }
+
+    private fun fetchFirstSeenIn(position: Int, episodeUrl: String) {
+        val id = Uri.parse(episodeUrl).lastPathSegment?.toInt()!!
+        lifecycleScope.launch {
+            viewModel.fetchEpisode(id).collect {
+                when (it) {
+                    is Resource.Loading -> {
+                    }
+                    is Resource.Success -> {
+                        it.data?.let { episode ->
+                            characterAdapter.setFirstSeenIn(position, episode.name)
+                        }
+                    }
+                    is Resource.Error -> {
+                    }
+                }
+            }
+        }
     }
 
     override fun setupObservers() {
