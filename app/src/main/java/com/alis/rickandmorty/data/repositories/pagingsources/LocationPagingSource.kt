@@ -11,13 +11,16 @@ import java.io.IOException
 private const val LOCATION_STARTING_PAGE_INDEX = 1
 
 class LocationPagingSource(
-    private val service: LocationApiService
+    private val service: LocationApiService,
+    private val name: String?,
+    private val type: String?,
+    private val dimension: String?
 ) : PagingSource<Int, Location>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Location> {
         val position = params.key ?: LOCATION_STARTING_PAGE_INDEX
         return try {
-            val response = service.fetchLocations(position)
+            val response = service.fetchLocations(position, name, type, dimension)
             val next = response.info.next
             val nextPageNumber = if (next == null) {
                 null

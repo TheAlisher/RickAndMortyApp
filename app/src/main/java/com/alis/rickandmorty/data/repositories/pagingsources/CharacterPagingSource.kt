@@ -12,12 +12,17 @@ private const val CHARACTER_STARTING_PAGE_INDEX = 1
 
 class CharacterPagingSource(
     private val service: CharacterApiService,
+    private val name: String?,
+    private val status: String?,
+    private val species: String?,
+    private val type: String?,
+    private val gender: String?
 ) : PagingSource<Int, Character>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Character> {
         val position = params.key ?: CHARACTER_STARTING_PAGE_INDEX
         return try {
-            val response = service.fetchCharacters(position)
+            val response = service.fetchCharacters(position, name, status, species, type, gender)
             val next = response.info.next
             val nextPageNumber = if (next == null) {
                 null

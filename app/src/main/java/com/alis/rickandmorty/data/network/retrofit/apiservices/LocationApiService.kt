@@ -10,7 +10,10 @@ interface LocationApiService {
 
     @GET("/api/location")
     suspend fun fetchLocations(
-        @Query("page") page: Int
+        @Query("page") page: Int,
+        @Query("name") name: String?,
+        @Query("type") type: String?,
+        @Query("dimension") dimension: String?
     ): RickAndMortyResponse<Location>
 
     @GET("/api/location/{id}")

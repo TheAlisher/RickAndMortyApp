@@ -11,13 +11,15 @@ import java.io.IOException
 private const val EPISODE_STARTING_PAGE_INDEX = 1
 
 class EpisodePagingSource(
-    private val service: EpisodeApiService
+    private val service: EpisodeApiService,
+    private val name: String?,
+    private val episode: String?
 ) : PagingSource<Int, Episode>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Episode> {
         val position = params.key ?: EPISODE_STARTING_PAGE_INDEX
         return try {
-            val response = service.fetchEpisodes(position)
+            val response = service.fetchEpisodes(position, name, episode)
             val next = response.info.next
             val nextPageNumber = if (next == null) {
                 null

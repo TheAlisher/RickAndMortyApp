@@ -14,14 +14,20 @@ class CharacterRepository @Inject constructor(
     private val service: CharacterApiService
 ) : BaseRepository() {
 
-    fun fetchCharacters(): Flow<PagingData<Character>> {
+    fun fetchCharacters(
+        name: String? = null,
+        status: String? = null,
+        species: String? = null,
+        type: String? = null,
+        gender: String? = null
+    ): Flow<PagingData<Character>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 10,
                 enablePlaceholders = false
             ),
             pagingSourceFactory = {
-                CharacterPagingSource(service)
+                CharacterPagingSource(service, name, status, species, type, gender)
             }
         ).flow
     }

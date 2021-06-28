@@ -14,14 +14,18 @@ class LocationRepository @Inject constructor(
     private val service: LocationApiService
 ) : BaseRepository() {
 
-    fun fetchLocations(): Flow<PagingData<Location>> {
+    fun fetchLocations(
+        name: String? = null,
+        type: String? = null,
+        dimension: String? = null
+    ): Flow<PagingData<Location>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 10,
                 enablePlaceholders = false
             ),
             pagingSourceFactory = {
-                LocationPagingSource(service)
+                LocationPagingSource(service, name, type, dimension)
             }
         ).flow
     }

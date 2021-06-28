@@ -14,14 +14,17 @@ class EpisodeRepository @Inject constructor(
     private val service: EpisodeApiService
 ) : BaseRepository() {
 
-    fun fetchEpisodes(): Flow<PagingData<Episode>> {
+    fun fetchEpisodes(
+        name: String? = null,
+        episode: String? = null
+    ): Flow<PagingData<Episode>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 10,
                 enablePlaceholders = false
             ),
             pagingSourceFactory = {
-                EpisodePagingSource(service)
+                EpisodePagingSource(service, name, episode)
             }
         ).flow
     }

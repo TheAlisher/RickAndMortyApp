@@ -10,7 +10,9 @@ interface EpisodeApiService {
 
     @GET("/api/episode")
     suspend fun fetchEpisodes(
-        @Query("page") page: Int
+        @Query("page") page: Int,
+        @Query("name") name: String?,
+        @Query("episode") episode: String?
     ): RickAndMortyResponse<Episode>
 
     @GET("/api/episode/{id}")
