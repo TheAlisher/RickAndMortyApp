@@ -12,7 +12,8 @@ import com.alis.rickandmorty.databinding.ItemCharacterBinding
 import com.alis.rickandmorty.models.character.Character
 
 class CharacterAdapter(
-    val onItemClick: (name: String, id: Int) -> Unit
+    val onItemClick: (name: String, id: Int) -> Unit,
+    val onItemLongClick: (image: String) -> Unit
 ) : PagingDataAdapter<Character, CharacterAdapter.CharacterViewHolder>(
     diffCallback
 ) {
@@ -40,8 +41,7 @@ class CharacterAdapter(
                 }
             }
             itemView.setOnLongClickListener {
-                Log.d("anime", "itemView")
-                //TODO
+                onItemLongClick(getItem(absoluteAdapterPosition)!!.image)
                 true
             }
 

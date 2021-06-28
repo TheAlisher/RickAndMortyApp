@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_navigation_characters_to_charactersDetailFragment"
             app:destination="@id/charactersDetailFragment" />
+        <action
+            android:id="@+id/action_navigation_characters_to_charactersPhotoDetailDialog"
+            app:destination="@id/charactersPhotoDetailDialog" />
     </fragment>
 
     <fragment
@@ -47,6 +50,15 @@
             android:name="id"
             app:argType="integer" />
     </fragment>
+
+    <dialog
+        android:id="@+id/charactersPhotoDetailDialog"
+        android:name="com.alis.rickandmorty.ui.fragments.characters.photodetail.CharactersPhotoDetailDialog"
+        tools:layout="@layout/dialog_characters_photo_detail">
+        <argument
+            android:name="image"
+            app:argType="string" />
+    </dialog>
 
     <fragment
         android:id="@+id/locationDetailFragment"

@@ -27,7 +27,9 @@ class CharactersFragment : BaseFragmentWithMenu<CharactersViewModel, FragmentCha
     override val viewModel: CharactersViewModel by activityViewModels()
     override val binding by viewBinding(FragmentCharactersBinding::bind)
 
-    private val characterAdapter = CharacterAdapter(this::onItemClick)
+    private val characterAdapter = CharacterAdapter(
+        this::onItemClick, this::onItemLongClick
+    )
     private val loadStateAdapter = LoadStateAdapter {
         characterAdapter.retry()
     }
@@ -63,6 +65,14 @@ class CharactersFragment : BaseFragmentWithMenu<CharactersViewModel, FragmentCha
             CharactersFragmentDirections.actionNavigationCharactersToCharactersDetailFragment(
                 label = "${getString(R.string.fragment_label_detail_character)} $name",
                 id = id
+            )
+        )
+    }
+
+    private fun onItemLongClick(image: String) {
+        findNavController().navigate(
+            CharactersFragmentDirections.actionNavigationCharactersToCharactersPhotoDetailDialog(
+                image = image
             )
         )
     }
