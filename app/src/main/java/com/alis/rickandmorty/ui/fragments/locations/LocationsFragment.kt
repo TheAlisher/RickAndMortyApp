@@ -26,7 +26,7 @@ class LocationsFragment : BaseFragmentWithMenu<LocationsViewModel, FragmentLocat
 ) {
 
     override val viewModel: LocationsViewModel by viewModels()
-    override val binding: FragmentLocationsBinding by viewBinding()
+    override val binding by viewBinding(FragmentLocationsBinding::bind)
 
     private val locationAdapter = LocationAdapter(this::onItemClick)
     private val loadStateAdapter = LoadStateAdapter {

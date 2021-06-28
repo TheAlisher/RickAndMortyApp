@@ -26,7 +26,7 @@ class CharactersFragment : BaseFragmentWithMenu<CharactersViewModel, FragmentCha
 ) {
 
     override val viewModel: CharactersViewModel by viewModels()
-    override val binding: FragmentCharactersBinding by viewBinding()
+    override val binding by viewBinding(FragmentCharactersBinding::bind)
 
     private val characterAdapter = CharacterAdapter(this::onItemClick)
     private val loadStateAdapter = LoadStateAdapter {

@@ -26,7 +26,7 @@ class EpisodesFragment : BaseFragmentWithMenu<EpisodesViewModel, FragmentEpisode
 ) {
 
     override val viewModel: EpisodesViewModel by viewModels()
-    override val binding: FragmentEpisodesBinding by viewBinding()
+    override val binding by viewBinding(FragmentEpisodesBinding::bind)
 
     private val episodeAdapter = EpisodeAdapter(this::onItemClick)
     private val loadStateAdapter = LoadStateAdapter {
