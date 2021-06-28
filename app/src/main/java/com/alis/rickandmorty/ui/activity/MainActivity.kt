@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
             // region Toolbar
             when (id) {
                 R.id.detailFragment -> {
-                    //TODO show toolbar when toolbar hided WHEN SCROLL
+                    appBar.setExpanded(true)
                 }
             }
             // endregion
