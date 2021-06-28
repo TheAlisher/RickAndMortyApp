@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class LocationRepository @Inject constructor(
-    private val locationApiService: LocationApiService
+    private val service: LocationApiService
 ) : BaseRepository() {
 
     fun fetchLocations(): Flow<PagingData<Location>> {
@@ -21,8 +21,12 @@ class LocationRepository @Inject constructor(
                 enablePlaceholders = false
             ),
             pagingSourceFactory = {
-                LocationPagingSource(locationApiService)
+                LocationPagingSource(service)
             }
         ).flow
+    }
+
+    fun fetchLocation(id: Int) = doRequest {
+        service.fetchLocation(id)
     }
 }

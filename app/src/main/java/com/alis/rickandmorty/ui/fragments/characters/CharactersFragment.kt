@@ -3,7 +3,7 @@ package com.alis.rickandmorty.ui.fragments.characters
 import android.view.Menu
 import android.view.MenuInflater
 import androidx.core.view.isVisible
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
@@ -24,7 +24,7 @@ class CharactersFragment : BaseFragmentWithMenu<CharactersViewModel, FragmentCha
     R.layout.fragment_characters
 ) {
 
-    override val viewModel: CharactersViewModel by viewModels()
+    override val viewModel: CharactersViewModel by activityViewModels()
     override val binding by viewBinding(FragmentCharactersBinding::bind)
 
     private val characterAdapter = CharacterAdapter(this::onItemClick)

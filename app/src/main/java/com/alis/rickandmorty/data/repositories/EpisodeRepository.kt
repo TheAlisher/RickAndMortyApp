@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class EpisodeRepository @Inject constructor(
-    private val episodeApiService: EpisodeApiService
+    private val service: EpisodeApiService
 ) : BaseRepository() {
 
     fun fetchEpisodes(): Flow<PagingData<Episode>> {
@@ -21,8 +21,12 @@ class EpisodeRepository @Inject constructor(
                 enablePlaceholders = false
             ),
             pagingSourceFactory = {
-                EpisodePagingSource(episodeApiService)
+                EpisodePagingSource(service)
             }
         ).flow
+    }
+
+    fun fetchEpisode(id: Int) = doRequest {
+        service.fetchEpisode(id)
     }
 }
