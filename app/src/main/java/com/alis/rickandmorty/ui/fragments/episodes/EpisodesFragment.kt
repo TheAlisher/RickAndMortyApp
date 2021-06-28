@@ -1,7 +1,5 @@
 package com.alis.rickandmorty.ui.fragments.episodes
 
-import android.view.Menu
-import android.view.MenuInflater
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -10,7 +8,7 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
-import com.alis.rickandmorty.base.BaseFragmentWithMenu
+import com.alis.rickandmorty.base.BaseFragment
 import com.alis.rickandmorty.databinding.FragmentEpisodesBinding
 import com.alis.rickandmorty.ui.activity.MainActivity
 import com.alis.rickandmorty.ui.adapters.EpisodeAdapter
@@ -20,7 +18,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class EpisodesFragment : BaseFragmentWithMenu<EpisodesViewModel, FragmentEpisodesBinding>(
+class EpisodesFragment : BaseFragment<EpisodesViewModel, FragmentEpisodesBinding>(
     R.layout.fragment_episodes
 ) {
 
@@ -73,9 +71,5 @@ class EpisodesFragment : BaseFragmentWithMenu<EpisodesViewModel, FragmentEpisode
                 episodeAdapter.submitData(it)
             }
         }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.filter_menu, menu)
     }
 }
