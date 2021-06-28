@@ -1,5 +1,7 @@
 package com.alis.rickandmorty.ui.fragments.characters
 
+import android.view.Menu
+import android.view.MenuInflater
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -8,7 +10,7 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
-import com.alis.rickandmorty.base.BaseFragment
+import com.alis.rickandmorty.base.BaseFragmentWithMenu
 import com.alis.rickandmorty.databinding.FragmentCharactersBinding
 import com.alis.rickandmorty.models.enums.FromWhere
 import com.alis.rickandmorty.ui.activity.MainActivity
@@ -19,7 +21,7 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
-class CharactersFragment : BaseFragment<CharactersViewModel, FragmentCharactersBinding>(
+class CharactersFragment : BaseFragmentWithMenu<CharactersViewModel, FragmentCharactersBinding>(
     R.layout.fragment_characters
 ) {
 
@@ -73,5 +75,9 @@ class CharactersFragment : BaseFragment<CharactersViewModel, FragmentCharactersB
                 characterAdapter.submitData(it)
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.filter_menu, menu)
     }
 }
