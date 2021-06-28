@@ -18,16 +18,15 @@ class LocationPagingSource(
         val position = params.key ?: LOCATION_STARTING_PAGE_INDEX
         return try {
             val response = service.fetchLocations(position)
-            val episodes = response.body()
-            val next = episodes?.info?.next
+            val next = response.info.next
             val nextPageNumber = if (next == null) {
                 null
             } else {
-                Uri.parse(episodes.info.next).getQueryParameter("page")!!.toInt()
+                Uri.parse(response.info.next).getQueryParameter("page")!!.toInt()
             }
 
             LoadResult.Page(
-                data = episodes!!.results,
+                data = response.results,
                 prevKey = null,
                 nextKey = nextPageNumber
             )

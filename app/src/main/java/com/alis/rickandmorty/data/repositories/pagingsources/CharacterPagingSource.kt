@@ -18,16 +18,15 @@ class CharacterPagingSource(
         val position = params.key ?: CHARACTER_STARTING_PAGE_INDEX
         return try {
             val response = service.fetchCharacters(position)
-            val characters = response.body()
-            val next = characters?.info?.next
+            val next = response.info.next
             val nextPageNumber = if (next == null) {
                 null
             } else {
-                Uri.parse(characters.info.next).getQueryParameter("page")!!.toInt()
+                Uri.parse(response.info.next).getQueryParameter("page")!!.toInt()
             }
 
             LoadResult.Page(
-                data = characters!!.results,
+                data = response.results,
                 prevKey = null,
                 nextKey = nextPageNumber
             )
