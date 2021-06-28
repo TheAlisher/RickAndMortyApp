@@ -90,6 +90,7 @@ class CharacterAdapter(
                 character.apply {
                     val firstSeenInIsEmpty = firstSeenIn == null
                     progressBarCharacterFirstSeenIn.isVisible = firstSeenInIsEmpty
+                    textItemCharacterFirstSeenInData.isVisible = !firstSeenInIsEmpty
                     if (firstSeenInIsEmpty) {
                         fetchFirstSeenIn(absoluteAdapterPosition, episode.first())
                     } else {
