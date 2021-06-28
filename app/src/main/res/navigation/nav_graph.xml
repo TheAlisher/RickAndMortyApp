@@ -13,19 +13,61 @@
         android:id="@+id/navigation_characters"
         android:name="com.alis.rickandmorty.ui.fragments.characters.CharactersFragment"
         android:label="@string/fragment_label_characters"
-        tools:layout="@layout/fragment_characters" />
+        tools:layout="@layout/fragment_characters">
+        <action
+            android:id="@+id/action_navigation_characters_to_charactersDetailFragment"
+            app:destination="@id/charactersDetailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_locations"
         android:name="com.alis.rickandmorty.ui.fragments.locations.LocationsFragment"
         android:label="@string/fragment_label_locations"
-        tools:layout="@layout/fragment_locations" />
+        tools:layout="@layout/fragment_locations">
+        <action
+            android:id="@+id/action_navigation_locations_to_locationDetailFragment"
+            app:destination="@id/locationDetailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_episodes"
         android:name="com.alis.rickandmorty.ui.fragments.episodes.EpisodesFragment"
         android:label="@string/fragment_label_episodes"
-        tools:layout="@layout/fragment_episodes" />
+        tools:layout="@layout/fragment_episodes">
+        <action
+            android:id="@+id/action_navigation_episodes_to_episodesDetailFragment"
+            app:destination="@id/episodesDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/charactersDetailFragment"
+        android:name="com.alis.rickandmorty.ui.fragments.characters.detail.CharactersDetailFragment"
+        android:label="{label}"
+        tools:layout="@layout/fragment_characters_detail">
+        <argument
+            android:name="label"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/locationDetailFragment"
+        android:name="com.alis.rickandmorty.ui.fragments.locations.detail.LocationDetailFragment"
+        android:label="{label}"
+        tools:layout="@layout/fragment_locations_detail">
+        <argument
+            android:name="label"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/episodesDetailFragment"
+        android:name="com.alis.rickandmorty.ui.fragments.episodes.detail.EpisodesDetailFragment"
+        android:label="{label}"
+        tools:layout="@layout/fragment_episodes_detail">
+        <argument
+            android:name="label"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/detailFragment"
