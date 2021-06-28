@@ -9,8 +9,6 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
 import com.alis.rickandmorty.R
 import com.alis.rickandmorty.databinding.ActivityMainBinding
-import com.alis.rickandmorty.extensions.gone
-import com.alis.rickandmorty.extensions.visible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -72,25 +70,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateUIComponents(id: Int) {
         binding.apply {
-
-            // region Toolbar
-            when (id) {
-                R.id.detailFragment -> {
-                    appBar.setExpanded(true)
-                }
-            }
-            // endregion
-
-            // region BottomNavigation
-            when (id) {
-                R.id.detailFragment -> {
-                    bottomNavigation.gone()
-                }
-                else -> {
-                    bottomNavigation.visible()
-                }
-            }
-            // endregion
+            // …
         }
     }
 
