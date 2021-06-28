@@ -45,7 +45,8 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.navigation_characters,
                 R.id.navigation_locations,
-                R.id.navigation_episodes
+                R.id.navigation_episodes,
+                R.id.navigation_search
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
