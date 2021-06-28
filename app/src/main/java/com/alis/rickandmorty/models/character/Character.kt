@@ -25,8 +25,8 @@ data class Character(
     val location: SimpleLocation,
     @SerializedName("image")
     val image: String,
-    /*@SerializedName("episode")
-    val episode: MutableList<String>? = null,*/
+    @SerializedName("episode")
+    val episode: MutableList<String>,
     @SerializedName("url")
     val url: String,
     @SerializedName("created")
