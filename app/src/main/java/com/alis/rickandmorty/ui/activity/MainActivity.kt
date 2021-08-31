@@ -69,10 +69,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateUIComponents(id: Int) {
-        binding.apply {
-            // …
-        }
+    private fun updateUIComponents(id: Int) = with(binding) {
+        // …
     }
 
     override fun onSupportNavigateUp(): Boolean {
