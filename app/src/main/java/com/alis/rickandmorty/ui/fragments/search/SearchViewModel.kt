@@ -3,17 +3,17 @@ package com.alis.rickandmorty.ui.fragments.search
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import com.alis.rickandmorty.base.BaseViewModel
-import com.alis.rickandmorty.data.repositories.CharacterRepository
-import com.alis.rickandmorty.data.repositories.EpisodeRepository
-import com.alis.rickandmorty.data.repositories.LocationRepository
+import com.alis.rickandmorty.data.repositories.CharacterRepositoryImpl
+import com.alis.rickandmorty.data.repositories.EpisodeRepositoryImpl
+import com.alis.rickandmorty.data.repositories.LocationRepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class SearchViewModel @Inject constructor(
-    private val characterRepository: CharacterRepository,
-    private val locationRepository: LocationRepository,
-    private val episodeRepository: EpisodeRepository
+    private val characterRepository: CharacterRepositoryImpl,
+    private val locationRepository: LocationRepositoryImpl,
+    private val episodeRepository: EpisodeRepositoryImpl
 ) : BaseViewModel() {
 
     fun fetchCharacters(

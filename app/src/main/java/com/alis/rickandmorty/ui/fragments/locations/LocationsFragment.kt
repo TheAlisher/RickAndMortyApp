@@ -30,7 +30,7 @@ class LocationsFragment : BaseFragment<LocationsViewModel, FragmentLocationsBind
         locationAdapter.retry()
     }
 
-    override fun setupViews() {
+    override fun initialize() {
         binding.recyclerLocations.apply {
             adapter = locationAdapter.withLoadStateFooter(
                 footer = loadStateAdapter

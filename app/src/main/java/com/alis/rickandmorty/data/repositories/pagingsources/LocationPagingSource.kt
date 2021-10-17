@@ -3,8 +3,9 @@ package com.alis.rickandmorty.data.repositories.pagingsources
 import android.net.Uri
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.alis.rickandmorty.data.network.dtos.location.toLocation
 import com.alis.rickandmorty.data.network.retrofit.apiservices.LocationApiService
-import com.alis.rickandmorty.models.location.Location
+import com.alis.rickandmorty.domain.models.location.Location
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -29,7 +30,7 @@ class LocationPagingSource(
             }
 
             LoadResult.Page(
-                data = response.results,
+                data = response.results.map { it.toLocation() },
                 prevKey = null,
                 nextKey = nextPageNumber
             )

@@ -1,8 +1,9 @@
-package com.alis.rickandmorty.models.episode
+package com.alis.rickandmorty.data.network.dtos.episode
 
+import com.alis.rickandmorty.domain.models.episode.Episode
 import com.google.gson.annotations.SerializedName
 
-data class Episode(
+data class EpisodeDto(
     @SerializedName("id")
     val id: Int,
     @SerializedName("name")
@@ -18,3 +19,15 @@ data class Episode(
     @SerializedName("created")
     val created: String
 )
+
+fun EpisodeDto.toEpisode(): Episode {
+    return Episode(
+        id,
+        name,
+        airDate,
+        episode,
+        characters,
+        url,
+        created
+    )
+}

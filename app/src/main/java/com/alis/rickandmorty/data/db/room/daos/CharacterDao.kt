@@ -4,14 +4,14 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.alis.rickandmorty.models.character.Character
+import com.alis.rickandmorty.data.network.dtos.character.CharacterDto
 
 @Dao
 interface CharacterDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(characters: MutableList<Character>)
+    fun insertAll(characters: MutableList<CharacterDto>)
 
-    @Query("SELECT * FROM character")
-    fun getAll(): MutableList<Character>
+    @Query("SELECT * FROM characterdto")
+    fun getAll(): MutableList<CharacterDto>
 }

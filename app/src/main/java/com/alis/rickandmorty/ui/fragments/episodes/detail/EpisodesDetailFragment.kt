@@ -10,11 +10,13 @@ import com.alis.rickandmorty.base.BaseFragment
 import com.alis.rickandmorty.data.resource.Resource
 import com.alis.rickandmorty.databinding.FragmentEpisodesDetailBinding
 import com.alis.rickandmorty.extensions.showToastShort
-import com.alis.rickandmorty.models.episode.Episode
+import com.alis.rickandmorty.domain.models.episode.Episode
 import com.alis.rickandmorty.ui.fragments.episodes.EpisodesViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class EpisodesDetailFragment : BaseFragment<EpisodesViewModel, FragmentEpisodesDetailBinding>(
     R.layout.fragment_episodes_detail
 ) {

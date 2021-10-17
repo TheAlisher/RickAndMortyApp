@@ -1,11 +1,12 @@
-package com.alis.rickandmorty.models.character
+package com.alis.rickandmorty.data.network.dtos.character
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.alis.rickandmorty.domain.models.character.Character
 import com.google.gson.annotations.SerializedName
 
 @Entity
-data class Character(
+class CharacterDto(
     @SerializedName("id")
     @PrimaryKey
     val id: Int,
@@ -20,9 +21,9 @@ data class Character(
     @SerializedName("gender")
     val gender: String,
     @SerializedName("origin")
-    val origin: Origin,
+    val origin: OriginDto,
     @SerializedName("location")
-    val location: SimpleLocation,
+    val location: SimpleLocationDto,
     @SerializedName("image")
     val image: String,
     @SerializedName("episode")
@@ -31,6 +32,21 @@ data class Character(
     val url: String,
     @SerializedName("created")
     val created: String,
-
-    var firstSeenIn: String? = null
 )
+
+fun CharacterDto.toCharacter(): Character {
+    return Character(
+        id,
+        name,
+        status,
+        species,
+        type,
+        gender,
+        origin.toOrigin(),
+        location.toSimpleLocation(),
+        image,
+        episode,
+        url,
+        created
+    )
+}

@@ -1,4 +1,4 @@
-package com.alis.rickandmorty.models.common
+package com.alis.rickandmorty.data.network.dtos
 
 import com.google.gson.annotations.SerializedName
 

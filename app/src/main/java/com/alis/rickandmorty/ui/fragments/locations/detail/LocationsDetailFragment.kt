@@ -10,11 +10,13 @@ import com.alis.rickandmorty.base.BaseFragment
 import com.alis.rickandmorty.data.resource.Resource
 import com.alis.rickandmorty.databinding.FragmentLocationsDetailBinding
 import com.alis.rickandmorty.extensions.showToastShort
-import com.alis.rickandmorty.models.location.Location
+import com.alis.rickandmorty.domain.models.location.Location
 import com.alis.rickandmorty.ui.fragments.locations.LocationsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class LocationDetailFragment : BaseFragment<LocationsViewModel, FragmentLocationsDetailBinding>(
     R.layout.fragment_locations_detail
 ) {

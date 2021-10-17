@@ -4,7 +4,8 @@ import android.net.Uri
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.alis.rickandmorty.data.network.retrofit.apiservices.CharacterApiService
-import com.alis.rickandmorty.models.character.Character
+import com.alis.rickandmorty.data.network.dtos.character.toCharacter
+import com.alis.rickandmorty.domain.models.character.Character
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -31,7 +32,7 @@ class CharacterPagingSource(
             }
 
             LoadResult.Page(
-                data = response.results,
+                data = response.results.map { it.toCharacter() },
                 prevKey = null,
                 nextKey = nextPageNumber
             )

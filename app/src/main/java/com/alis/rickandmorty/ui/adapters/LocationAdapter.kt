@@ -6,7 +6,8 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.alis.rickandmorty.databinding.ItemLocationBinding
-import com.alis.rickandmorty.models.location.Location
+import com.alis.rickandmorty.data.network.dtos.location.LocationDto
+import com.alis.rickandmorty.domain.models.location.Location
 
 class LocationAdapter(
     val onItemClick: (name: String, id: Int) -> Unit

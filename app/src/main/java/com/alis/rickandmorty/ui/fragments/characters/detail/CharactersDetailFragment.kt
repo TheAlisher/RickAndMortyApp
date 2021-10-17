@@ -11,11 +11,13 @@ import com.alis.rickandmorty.base.BaseFragment
 import com.alis.rickandmorty.data.resource.Resource
 import com.alis.rickandmorty.databinding.FragmentCharactersDetailBinding
 import com.alis.rickandmorty.extensions.showToastShort
-import com.alis.rickandmorty.models.character.Character
+import com.alis.rickandmorty.domain.models.character.Character
 import com.alis.rickandmorty.ui.fragments.characters.CharactersViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class CharactersDetailFragment : BaseFragment<CharactersViewModel, FragmentCharactersDetailBinding>(
     R.layout.fragment_characters_detail
 ) {

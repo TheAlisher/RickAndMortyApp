@@ -1,4 +1,4 @@
-package com.alis.rickandmorty.models.character
+package com.alis.rickandmorty.domain.models.character
 
 enum class CharacterGender(val gender: String) {
     FEMALE("female"),

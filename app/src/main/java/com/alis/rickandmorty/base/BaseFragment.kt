@@ -17,24 +17,24 @@ abstract class BaseFragment<ViewModel : BaseViewModel, Binding : ViewBinding>(
         super.onViewCreated(view, savedInstanceState)
 
         initialize()
-        setupViews()
+        setupArgs()
         setupListeners()
         setupRequests()
         setupObservers()
     }
 
-    open fun initialize() {
+    protected open fun initialize() {
     }
 
-    open fun setupViews() {
+    protected open fun setupArgs() {
     }
 
-    open fun setupListeners() {
+    protected open fun setupListeners() {
     }
 
-    open fun setupRequests() {
+    protected open fun setupRequests() {
     }
 
-    open fun setupObservers() {
+    protected open fun setupObservers() {
     }
 }

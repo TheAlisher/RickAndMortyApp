@@ -30,7 +30,7 @@ class EpisodesFragment : BaseFragment<EpisodesViewModel, FragmentEpisodesBinding
         episodeAdapter.retry()
     }
 
-    override fun setupViews() {
+    override fun initialize() {
         binding.recyclerEpisodes.apply {
             adapter = episodeAdapter.withLoadStateFooter(
                 footer = loadStateAdapter

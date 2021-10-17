@@ -1,7 +1,7 @@
 package com.alis.rickandmorty.data.network.retrofit.apiservices
 
-import com.alis.rickandmorty.models.character.Character
-import com.alis.rickandmorty.models.common.RickAndMortyResponse
+import com.alis.rickandmorty.data.network.dtos.RickAndMortyResponse
+import com.alis.rickandmorty.data.network.dtos.character.CharacterDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -16,10 +16,10 @@ interface CharacterApiService {
         @Query("species") species: String?,
         @Query("type") type: String?,
         @Query("gender") gender: String?
-    ): RickAndMortyResponse<Character>
+    ): RickAndMortyResponse<CharacterDto>
 
     @GET("/api/character/{id}")
     suspend fun fetchCharacter(
         @Path("id") id: Int
-    ): Character
+    ): CharacterDto
 }

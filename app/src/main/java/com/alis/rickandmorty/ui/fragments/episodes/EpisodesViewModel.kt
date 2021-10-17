@@ -1,16 +1,20 @@
 package com.alis.rickandmorty.ui.fragments.episodes
 
+import androidx.lifecycle.viewModelScope
+import androidx.paging.cachedIn
 import com.alis.rickandmorty.base.BaseViewModel
-import com.alis.rickandmorty.data.repositories.EpisodeRepository
+import com.alis.rickandmorty.domain.usecases.episode.FetchEpisodeUseCase
+import com.alis.rickandmorty.domain.usecases.episode.FetchEpisodesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class EpisodesViewModel @Inject constructor(
-    private val repository: EpisodeRepository
+    private val fetchEpisodesUseCase: FetchEpisodesUseCase,
+    private val fetchEpisodeUseCase: FetchEpisodeUseCase
 ) : BaseViewModel() {
 
-    fun fetchEpisodes() = repository.fetchEpisodes()
+    fun fetchEpisodes() = fetchEpisodesUseCase().cachedIn(viewModelScope)
 
-    fun fetchEpisode(id: Int) = repository.fetchEpisode(id)
+    fun fetchEpisode(id: Int) = fetchEpisodeUseCase(id)
 }

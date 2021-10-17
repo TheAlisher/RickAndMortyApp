@@ -3,8 +3,9 @@ package com.alis.rickandmorty.data.repositories.pagingsources
 import android.net.Uri
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.alis.rickandmorty.data.network.dtos.episode.toEpisode
 import com.alis.rickandmorty.data.network.retrofit.apiservices.EpisodeApiService
-import com.alis.rickandmorty.models.episode.Episode
+import com.alis.rickandmorty.domain.models.episode.Episode
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -28,7 +29,7 @@ class EpisodePagingSource(
             }
 
             LoadResult.Page(
-                data = response.results,
+                data = response.results.map { it.toEpisode() },
                 prevKey = null,
                 nextKey = nextPageNumber
             )

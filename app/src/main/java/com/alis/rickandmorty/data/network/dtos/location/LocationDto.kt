@@ -1,8 +1,9 @@
-package com.alis.rickandmorty.models.location
+package com.alis.rickandmorty.data.network.dtos.location
 
+import com.alis.rickandmorty.domain.models.location.Location
 import com.google.gson.annotations.SerializedName
 
-data class Location(
+data class LocationDto(
     @SerializedName("id")
     val id: Int,
     @SerializedName("name")
@@ -18,3 +19,15 @@ data class Location(
     @SerializedName("created")
     val created: String
 )
+
+fun LocationDto.toLocation(): Location {
+    return Location(
+        id,
+        name,
+        type,
+        dimension,
+        residents,
+        url,
+        created
+    )
+}

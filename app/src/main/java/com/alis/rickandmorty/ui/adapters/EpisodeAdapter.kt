@@ -6,7 +6,8 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.alis.rickandmorty.databinding.ItemEpisodeBinding
-import com.alis.rickandmorty.models.episode.Episode
+import com.alis.rickandmorty.data.network.dtos.episode.EpisodeDto
+import com.alis.rickandmorty.domain.models.episode.Episode
 
 class EpisodeAdapter(
     val onItemClick: (name: String, id: Int) -> Unit

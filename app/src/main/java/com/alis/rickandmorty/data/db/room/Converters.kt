@@ -1,8 +1,8 @@
 package com.alis.rickandmorty.data.db.room
 
 import androidx.room.TypeConverter
-import com.alis.rickandmorty.models.character.Origin
-import com.alis.rickandmorty.models.character.SimpleLocation
+import com.alis.rickandmorty.data.network.dtos.character.OriginDto
+import com.alis.rickandmorty.data.network.dtos.character.SimpleLocationDto
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -19,16 +19,16 @@ class Converters {
     }
 
     @TypeConverter
-    fun fromOrigin(value: String?) = fromJson<Origin>(value)
+    fun fromOrigin(value: String?) = fromJson<OriginDto>(value)
 
     @TypeConverter()
-    fun originToJson(origin: Origin?) = toJson(origin)
+    fun originToJson(origin: OriginDto?) = toJson(origin)
 
     @TypeConverter
-    fun fromSimpleLocation(value: String?) = fromJson<SimpleLocation>(value)
+    fun fromSimpleLocation(value: String?) = fromJson<SimpleLocationDto>(value)
 
     @TypeConverter
-    fun simpleLocationToJson(simpleLocation: SimpleLocation) = toJson(simpleLocation)
+    fun simpleLocationToJson(simpleLocation: SimpleLocationDto) = toJson(simpleLocation)
 
     @TypeConverter
     fun fromEpisodes(value: String?) = fromJson<MutableList<String>?>(value)

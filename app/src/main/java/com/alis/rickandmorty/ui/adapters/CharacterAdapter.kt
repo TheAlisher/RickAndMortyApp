@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.alis.rickandmorty.R
 import com.alis.rickandmorty.databinding.ItemCharacterBinding
-import com.alis.rickandmorty.models.character.Character
+import com.alis.rickandmorty.domain.models.character.Character
 
 class CharacterAdapter(
     val onItemClick: (name: String, id: Int) -> Unit,

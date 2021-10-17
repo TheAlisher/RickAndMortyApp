@@ -35,7 +35,7 @@ class CharactersFragment : BaseFragment<CharactersViewModel, FragmentCharactersB
         characterAdapter.retry()
     }
 
-    override fun setupViews() {
+    override fun initialize() {
         binding.recyclerCharacters.apply {
             adapter = characterAdapter.withLoadStateFooter(
                 footer = loadStateAdapter

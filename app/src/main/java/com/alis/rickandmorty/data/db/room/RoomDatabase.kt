@@ -4,9 +4,9 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.alis.rickandmorty.data.db.room.daos.CharacterDao
-import com.alis.rickandmorty.models.character.Character
+import com.alis.rickandmorty.data.network.dtos.character.CharacterDto
 
-@Database(entities = [Character::class], version = 1)
+@Database(entities = [CharacterDto::class], version = 1)
 @TypeConverters(Converters::class)
 abstract class RoomDatabase : RoomDatabase() {
 

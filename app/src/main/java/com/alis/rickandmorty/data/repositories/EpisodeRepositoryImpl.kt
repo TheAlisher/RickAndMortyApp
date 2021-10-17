@@ -4,19 +4,21 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.alis.rickandmorty.base.BaseRepository
+import com.alis.rickandmorty.data.network.dtos.episode.toEpisode
 import com.alis.rickandmorty.data.network.retrofit.apiservices.EpisodeApiService
 import com.alis.rickandmorty.data.repositories.pagingsources.EpisodePagingSource
-import com.alis.rickandmorty.models.episode.Episode
+import com.alis.rickandmorty.domain.repositories.EpisodeRepository
+import com.alis.rickandmorty.domain.models.episode.Episode
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class EpisodeRepository @Inject constructor(
+class EpisodeRepositoryImpl @Inject constructor(
     private val service: EpisodeApiService
-) : BaseRepository() {
+) : BaseRepository(), EpisodeRepository {
 
-    fun fetchEpisodes(
-        name: String? = null,
-        episode: String? = null
+    override fun fetchEpisodes(
+        name: String?,
+        episode: String?
     ): Flow<PagingData<Episode>> {
         return Pager(
             config = PagingConfig(
@@ -29,7 +31,7 @@ class EpisodeRepository @Inject constructor(
         ).flow
     }
 
-    fun fetchEpisode(id: Int) = doRequest {
-        service.fetchEpisode(id)
+    override fun fetchEpisode(id: Int) = doRequest {
+        service.fetchEpisode(id).toEpisode()
     }
 }

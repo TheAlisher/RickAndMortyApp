@@ -4,20 +4,22 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.alis.rickandmorty.base.BaseRepository
+import com.alis.rickandmorty.data.network.dtos.location.toLocation
 import com.alis.rickandmorty.data.network.retrofit.apiservices.LocationApiService
 import com.alis.rickandmorty.data.repositories.pagingsources.LocationPagingSource
-import com.alis.rickandmorty.models.location.Location
+import com.alis.rickandmorty.domain.repositories.LocationRepository
+import com.alis.rickandmorty.domain.models.location.Location
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class LocationRepository @Inject constructor(
+class LocationRepositoryImpl @Inject constructor(
     private val service: LocationApiService
-) : BaseRepository() {
+) : BaseRepository(), LocationRepository {
 
-    fun fetchLocations(
-        name: String? = null,
-        type: String? = null,
-        dimension: String? = null
+    override fun fetchLocations(
+        name: String?,
+        type: String?,
+        dimension: String?
     ): Flow<PagingData<Location>> {
         return Pager(
             config = PagingConfig(
@@ -30,7 +32,7 @@ class LocationRepository @Inject constructor(
         ).flow
     }
 
-    fun fetchLocation(id: Int) = doRequest {
-        service.fetchLocation(id)
+    override fun fetchLocation(id: Int) = doRequest {
+        service.fetchLocation(id).toLocation()
     }
 }
