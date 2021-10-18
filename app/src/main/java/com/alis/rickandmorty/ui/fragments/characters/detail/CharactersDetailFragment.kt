@@ -27,7 +27,9 @@ class CharactersDetailFragment : BaseFragment<CharactersViewModel, FragmentChara
     private val args: CharactersDetailFragmentArgs by navArgs()
 
     override fun setupRequests() {
-        lifecycleScope.launch {
+        viewModel.fetchCharacter(args.id)
+
+        /*lifecycleScope.launch {
             viewModel.fetchCharacter(args.id).collect {
                 binding.progressBarCharactersDetail.isVisible = it is Resource.Loading
                 when (it) {
@@ -41,12 +43,30 @@ class CharactersDetailFragment : BaseFragment<CharactersViewModel, FragmentChara
                     }
                 }
             }
-        }
+        }*/
     }
 
     private fun subscribeToCharacterSuccess(data: Character) {
         binding.apply {
             imageCharactersDetail.load(data.image)
         }
+    }
+
+    override fun setupObservers() {
+        subscribeToFoo()
+    }
+
+    private fun subscribeToFoo() = with(viewModel) {
+        characterLoading.observe(viewLifecycleOwner, {
+            binding.progressBarCharactersDetail.isVisible = it
+        })
+
+        characterError.observe(viewLifecycleOwner, {
+            showToastShort(it)
+        })
+
+        characterData.observe(viewLifecycleOwner, {
+            subscribeToCharacterSuccess(it)
+        })
     }
 }
