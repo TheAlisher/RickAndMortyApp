@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_characters"
-        android:name="com.alis.rickandmorty.ui.fragments.characters.CharactersFragment"
+        android:name="com.alis.rickandmorty.presentation.ui.fragments.characters.CharactersFragment"
         android:label="@string/fragment_label_characters"
         tools:layout="@layout/fragment_characters">
         <action
@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/navigation_locations"
-        android:name="com.alis.rickandmorty.ui.fragments.locations.LocationsFragment"
+        android:name="com.alis.rickandmorty.presentation.ui.fragments.locations.LocationsFragment"
         android:label="@string/fragment_label_locations"
         tools:layout="@layout/fragment_locations">
         <action
@@ -30,7 +30,7 @@
 
     <fragment
         android:id="@+id/navigation_episodes"
-        android:name="com.alis.rickandmorty.ui.fragments.episodes.EpisodesFragment"
+        android:name="com.alis.rickandmorty.presentation.ui.fragments.episodes.EpisodesFragment"
         android:label="@string/fragment_label_episodes"
         tools:layout="@layout/fragment_episodes">
         <action
@@ -40,13 +40,13 @@
 
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.alis.rickandmorty.ui.fragments.search.SearchFragment"
+        android:name="com.alis.rickandmorty.presentation.ui.fragments.search.SearchFragment"
         android:label="@string/fragment_label_search"
         tools:layout="@layout/fragment_search" />
 
     <fragment
         android:id="@+id/charactersDetailFragment"
-        android:name="com.alis.rickandmorty.ui.fragments.characters.detail.CharactersDetailFragment"
+        android:name="com.alis.rickandmorty.presentation.ui.fragments.characters.detail.CharactersDetailFragment"
         android:label="{label}"
         tools:layout="@layout/fragment_characters_detail">
         <argument
@@ -59,7 +59,7 @@
 
     <dialog
         android:id="@+id/charactersPhotoDetailDialog"
-        android:name="com.alis.rickandmorty.ui.fragments.characters.photodetail.CharactersPhotoDetailDialog"
+        android:name="com.alis.rickandmorty.presentation.ui.fragments.characters.photodetail.CharactersPhotoDetailDialog"
         tools:layout="@layout/dialog_characters_photo_detail">
         <argument
             android:name="image"
@@ -68,7 +68,7 @@
 
     <fragment
         android:id="@+id/locationDetailFragment"
-        android:name="com.alis.rickandmorty.ui.fragments.locations.detail.LocationDetailFragment"
+        android:name="com.alis.rickandmorty.presentation.ui.fragments.locations.detail.LocationDetailFragment"
         android:label="{label}"
         tools:layout="@layout/fragment_locations_detail">
         <argument
@@ -81,7 +81,7 @@
 
     <fragment
         android:id="@+id/episodesDetailFragment"
-        android:name="com.alis.rickandmorty.ui.fragments.episodes.detail.EpisodesDetailFragment"
+        android:name="com.alis.rickandmorty.presentation.ui.fragments.episodes.detail.EpisodesDetailFragment"
         android:label="{label}"
         tools:layout="@layout/fragment_episodes_detail">
         <argument
@@ -94,7 +94,7 @@
 
     <dialog
         android:id="@+id/navigation_filter"
-        android:name="com.alis.rickandmorty.ui.dialogs.FilterDialog"
+        android:name="com.alis.rickandmorty.presentation.ui.dialogs.FilterDialog"
         android:label="dialog_filter"
         tools:layout="@layout/dialog_filter" />
 

@@ -1,8 +1,8 @@
 package com.alis.rickandmorty.di
 
-import com.alis.rickandmorty.data.network.retrofit.apiservices.CharacterApiService
-import com.alis.rickandmorty.data.network.retrofit.apiservices.EpisodeApiService
-import com.alis.rickandmorty.data.network.retrofit.apiservices.LocationApiService
+import com.alis.rickandmorty.data.network.apiservices.CharacterApiService
+import com.alis.rickandmorty.data.network.apiservices.EpisodeApiService
+import com.alis.rickandmorty.data.network.apiservices.LocationApiService
 import com.alis.rickandmorty.data.repositories.CharacterRepositoryImpl
 import com.alis.rickandmorty.data.repositories.EpisodeRepositoryImpl
 import com.alis.rickandmorty.data.repositories.LocationRepositoryImpl

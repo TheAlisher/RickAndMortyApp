@@ -1,6 +1,6 @@
 package com.alis.rickandmorty.di
 
-import com.alis.rickandmorty.data.network.retrofit.RetrofitClient
+import com.alis.rickandmorty.data.network.RetrofitClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

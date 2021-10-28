@@ -1,6 +1,6 @@
 package com.alis.rickandmorty.base
 
-import com.alis.rickandmorty.data.resource.Resource
+import com.alis.rickandmorty.common.resource.Resource
 import kotlinx.coroutines.flow.flow
 
 abstract class BaseRepository {

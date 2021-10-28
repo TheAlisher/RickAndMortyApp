@@ -5,8 +5,8 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.alis.rickandmorty.base.BaseRepository
 import com.alis.rickandmorty.data.network.dtos.episode.toEpisode
-import com.alis.rickandmorty.data.network.retrofit.apiservices.EpisodeApiService
-import com.alis.rickandmorty.data.repositories.pagingsources.EpisodePagingSource
+import com.alis.rickandmorty.data.network.apiservices.EpisodeApiService
+import com.alis.rickandmorty.data.network.pagingsources.EpisodePagingSource
 import com.alis.rickandmorty.domain.repositories.EpisodeRepository
 import com.alis.rickandmorty.domain.models.episode.Episode
 import kotlinx.coroutines.flow.Flow
