@@ -51,7 +51,7 @@ class CharacterAdapter(
                     }
                 }
 
-                imageItemCharacter.setOnLongClickListener {
+                root.setOnLongClickListener {
                     onItemLongClick(getItem(absoluteAdapterPosition)!!.image)
                     true
                 }
