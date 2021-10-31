@@ -56,7 +56,7 @@ class CharactersFragment : BaseFragment<CharactersViewModel, FragmentCharactersB
 
     private fun onItemClick(name: String, id: Int) {
         findNavController().navigate(
-            CharactersFragmentDirections.actionNavigationCharactersToCharactersDetailFragment(
+            CharactersFragmentDirections.actionNavigationCharactersToCharacterDetailFragment(
                 label = "${getString(R.string.fragment_label_detail_character)} $name",
                 id = id
             )
@@ -65,7 +65,7 @@ class CharactersFragment : BaseFragment<CharactersViewModel, FragmentCharactersB
 
     private fun onItemLongClick(image: String) {
         findNavController().navigate(
-            CharactersFragmentDirections.actionNavigationCharactersToCharactersPhotoDetailDialog(
+            CharactersFragmentDirections.actionNavigationCharactersToCharacterImageDialog(
                 image = image
             )
         )

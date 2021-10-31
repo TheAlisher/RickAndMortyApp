@@ -8,12 +8,12 @@ import android.viewbinding.library.dialogfragment.viewBinding
 import androidx.navigation.fragment.navArgs
 import coil.load
 import com.alis.rickandmorty.base.BaseDialog
-import com.alis.rickandmorty.databinding.DialogCharactersImageBinding
+import com.alis.rickandmorty.databinding.DialogCharacterImageBinding
 
-class CharactersImageDialog : BaseDialog<DialogCharactersImageBinding>() {
+class CharacterImageDialog : BaseDialog<DialogCharacterImageBinding>() {
 
-    override val binding: DialogCharactersImageBinding by viewBinding()
-    private val args: CharactersImageDialogArgs by navArgs()
+    override val binding: DialogCharacterImageBinding by viewBinding()
+    private val args: CharacterImageDialogArgs by navArgs()
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ui.dialogs.characters.image.CharactersImageDialog">
+    tools:context=".presentation.ui.dialogs.characters.image.CharacterImageDialog">
 
     <ImageView
         android:id="@+id/image_characters_photo_detail"

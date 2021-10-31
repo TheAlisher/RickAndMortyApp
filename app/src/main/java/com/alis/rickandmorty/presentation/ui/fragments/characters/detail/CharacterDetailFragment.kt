@@ -7,21 +7,20 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
 import com.alis.rickandmorty.R
 import com.alis.rickandmorty.base.BaseFragment
-import com.alis.rickandmorty.databinding.FragmentCharactersDetailBinding
 import com.alis.rickandmorty.common.extensions.showToastShort
-import com.alis.rickandmorty.domain.models.character.Character
+import com.alis.rickandmorty.databinding.FragmentCharacterDetailBinding
 import com.alis.rickandmorty.presentation.state.UIState
-import com.alis.rickandmorty.presentation.ui.fragments.characters.CharactersViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CharactersDetailFragment : BaseFragment<CharactersViewModel, FragmentCharactersDetailBinding>(
-    R.layout.fragment_characters_detail
+class CharacterDetailFragment(
+) : BaseFragment<CharacterDetailViewModel, FragmentCharacterDetailBinding>(
+    R.layout.fragment_character_detail
 ) {
 
-    override val viewModel: CharactersViewModel by activityViewModels()
-    override val binding by viewBinding(FragmentCharactersDetailBinding::bind)
-    private val args: CharactersDetailFragmentArgs by navArgs()
+    override val viewModel: CharacterDetailViewModel by activityViewModels()
+    override val binding by viewBinding(FragmentCharacterDetailBinding::bind)
+    private val args: CharacterDetailFragmentArgs by navArgs()
 
     override fun setupRequests() {
         viewModel.fetchCharacter(args.id)
