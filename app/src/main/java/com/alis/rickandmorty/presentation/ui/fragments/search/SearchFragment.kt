@@ -21,8 +21,6 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>(
         setHasOptionsMenu(true)
     }
 
-
-
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.filter_menu, menu)
     }

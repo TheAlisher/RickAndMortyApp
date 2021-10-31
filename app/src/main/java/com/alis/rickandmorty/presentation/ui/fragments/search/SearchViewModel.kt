@@ -3,34 +3,34 @@ package com.alis.rickandmorty.presentation.ui.fragments.search
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import com.alis.rickandmorty.base.BaseViewModel
-import com.alis.rickandmorty.data.repositories.CharacterRepositoryImpl
-import com.alis.rickandmorty.data.repositories.EpisodeRepositoryImpl
-import com.alis.rickandmorty.data.repositories.LocationRepositoryImpl
+import com.alis.rickandmorty.domain.usecases.character.FetchCharactersUseCase
+import com.alis.rickandmorty.domain.usecases.episode.FetchEpisodesUseCase
+import com.alis.rickandmorty.domain.usecases.location.FetchLocationsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class SearchViewModel @Inject constructor(
-    private val characterRepository: CharacterRepositoryImpl,
-    private val locationRepository: LocationRepositoryImpl,
-    private val episodeRepository: EpisodeRepositoryImpl
+    private val fetchCharactersUseCase: FetchCharactersUseCase,
+    private val fetchLocationsUseCase: FetchLocationsUseCase,
+    private val fetchEpisodesUseCase: FetchEpisodesUseCase
 ) : BaseViewModel() {
 
     fun fetchCharacters(
-
-    ) = characterRepository.fetchCharacters(
-
+        name: String
+    ) = fetchCharactersUseCase(
+        name = name
     ).cachedIn(viewModelScope)
 
     fun fetchLocations(
-
-    ) = locationRepository.fetchLocations(
-
+        name: String
+    ) = fetchLocationsUseCase(
+        name = name
     ).cachedIn(viewModelScope)
 
     fun fetchEpisodes(
-
-    ) = episodeRepository.fetchEpisodes(
-
+        name: String
+    ) = fetchEpisodesUseCase(
+        name = name
     ).cachedIn(viewModelScope)
 }

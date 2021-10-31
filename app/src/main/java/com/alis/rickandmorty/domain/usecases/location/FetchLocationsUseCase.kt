@@ -6,5 +6,13 @@ import javax.inject.Inject
 class FetchLocationsUseCase @Inject constructor(
     private val repository: LocationRepository
 ) {
-    operator fun invoke() = repository.fetchLocations()
+    operator fun invoke(
+        name: String? = null,
+        type: String? = null,
+        dimension: String? = null
+    ) = repository.fetchLocations(
+        name,
+        type,
+        dimension
+    )
 }
