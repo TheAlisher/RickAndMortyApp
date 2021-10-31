@@ -3,14 +3,16 @@ package com.alis.rickandmorty.presentation.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.alis.rickandmorty.base.BaseDiffUtilItemCallback
 import com.alis.rickandmorty.databinding.ItemEpisodeBinding
 import com.alis.rickandmorty.domain.models.episode.Episode
 
 class EpisodeAdapter(
     val onItemClick: (name: String, id: Int) -> Unit
-) : PagingDataAdapter<Episode, EpisodeAdapter.EpisodeViewHolder>(EpisodeDiffCallback()) {
+) : PagingDataAdapter<Episode, EpisodeAdapter.EpisodeViewHolder>(
+    BaseDiffUtilItemCallback()
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EpisodeViewHolder {
         return EpisodeViewHolder(
@@ -30,30 +32,16 @@ class EpisodeAdapter(
 
         init {
             itemView.setOnClickListener {
-                getItem(absoluteAdapterPosition)!!.apply {
+                with(getItem(absoluteAdapterPosition)!!) {
                     onItemClick(name, id)
                 }
             }
         }
 
-        fun onBind(episode: Episode) {
-            binding.apply {
-                binding.apply {
-                    textItemEpisodeName.text = episode.name
-                    textItemEpisodeAirDate.text = episode.airDate
-                    textItemEpisodeCodeOfEpisode.text = episode.episode
-                }
-            }
-        }
-    }
-
-    class EpisodeDiffCallback : DiffUtil.ItemCallback<Episode>() {
-        override fun areItemsTheSame(oldItem: Episode, newItem: Episode): Boolean {
-            return oldItem.id == newItem.id
-        }
-
-        override fun areContentsTheSame(oldItem: Episode, newItem: Episode): Boolean {
-            return oldItem == newItem
+        fun onBind(episode: Episode) = with(binding) {
+            textItemEpisodeName.text = episode.name
+            textItemEpisodeAirDate.text = episode.airDate
+            textItemEpisodeCodeOfEpisode.text = episode.episode
         }
     }
 }

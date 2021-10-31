@@ -1,14 +1,13 @@
 package com.alis.rickandmorty.presentation.ui.fragments.locations
 
-import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
 import com.alis.rickandmorty.base.BaseFragment
+import com.alis.rickandmorty.common.extensions.bindUIToLoadState
 import com.alis.rickandmorty.databinding.FragmentLocationsBinding
 import com.alis.rickandmorty.presentation.ui.activity.MainActivity
 import com.alis.rickandmorty.presentation.ui.adapters.LocationAdapter
@@ -26,31 +25,20 @@ class LocationsFragment : BaseFragment<LocationsViewModel, FragmentLocationsBind
     override val binding by viewBinding(FragmentLocationsBinding::bind)
 
     private val locationAdapter = LocationAdapter(this::onItemClick)
-    private val loadStateAdapter = LoadStateAdapter {
-        locationAdapter.retry()
-    }
 
-    override fun initialize() {
-        binding.recyclerLocations.apply {
+    override fun initialize() = with(binding) {
+        recyclerLocations.apply {
             adapter = locationAdapter.withLoadStateFooter(
-                footer = loadStateAdapter
+                footer = LoadStateAdapter { locationAdapter.retry() }
             )
             layoutManager = LinearLayoutManager(context)
         }
 
-        locationAdapter.addLoadStateListener { loadStates ->
-            binding.apply {
-                recyclerLocations.isVisible = loadStates.refresh is LoadState.NotLoading
-                progressLocationsLoader.isVisible = loadStates.refresh is LoadState.Loading
-            }
+        locationAdapter.bindUIToLoadState(recyclerLocations, progressLocationsLoader) {
         }
     }
 
     override fun setupListeners() {
-        bottomNavigationItemReselectListener()
-    }
-
-    private fun bottomNavigationItemReselectListener() {
         (requireActivity() as MainActivity).setOnBottomNavigationItemReselectListener {
             binding.recyclerLocations.smoothScrollToPosition(0)
         }

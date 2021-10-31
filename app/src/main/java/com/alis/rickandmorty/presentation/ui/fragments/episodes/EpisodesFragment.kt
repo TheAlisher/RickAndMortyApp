@@ -1,14 +1,13 @@
 package com.alis.rickandmorty.presentation.ui.fragments.episodes
 
-import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
 import com.alis.rickandmorty.base.BaseFragment
+import com.alis.rickandmorty.common.extensions.bindUIToLoadState
 import com.alis.rickandmorty.databinding.FragmentEpisodesBinding
 import com.alis.rickandmorty.presentation.ui.activity.MainActivity
 import com.alis.rickandmorty.presentation.ui.adapters.EpisodeAdapter
@@ -26,31 +25,20 @@ class EpisodesFragment : BaseFragment<EpisodesViewModel, FragmentEpisodesBinding
     override val binding by viewBinding(FragmentEpisodesBinding::bind)
 
     private val episodeAdapter = EpisodeAdapter(this::onItemClick)
-    private val loadStateAdapter = LoadStateAdapter {
-        episodeAdapter.retry()
-    }
 
-    override fun initialize() {
-        binding.recyclerEpisodes.apply {
+    override fun initialize() = with(binding) {
+        recyclerEpisodes.apply {
             adapter = episodeAdapter.withLoadStateFooter(
-                footer = loadStateAdapter
+                footer = LoadStateAdapter { episodeAdapter.retry() }
             )
             layoutManager = LinearLayoutManager(context)
         }
 
-        episodeAdapter.addLoadStateListener { loadStates ->
-            binding.apply {
-                recyclerEpisodes.isVisible = loadStates.refresh is LoadState.NotLoading
-                progressEpisodesLoader.isVisible = loadStates.refresh is LoadState.Loading
-            }
+        episodeAdapter.bindUIToLoadState(recyclerEpisodes, progressEpisodesLoader) {
         }
     }
 
     override fun setupListeners() {
-        bottomNavigationItemReselectListener()
-    }
-
-    private fun bottomNavigationItemReselectListener() {
         (requireActivity() as MainActivity).setOnBottomNavigationItemReselectListener {
             binding.recyclerEpisodes.smoothScrollToPosition(0)
         }

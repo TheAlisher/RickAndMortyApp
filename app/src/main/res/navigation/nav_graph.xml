@@ -76,7 +76,7 @@
         android:id="@+id/locationDetailFragment"
         android:name="com.alis.rickandmorty.presentation.ui.fragments.locations.detail.LocationDetailFragment"
         android:label="{label}"
-        tools:layout="@layout/fragment_locations_detail">
+        tools:layout="@layout/fragment_location_detail">
         <argument
             android:name="label"
             app:argType="string" />
@@ -87,9 +87,9 @@
 
     <fragment
         android:id="@+id/episodeDetailFragment"
-        android:name="com.alis.rickandmorty.presentation.ui.fragments.episodes.detail.EpisodesDetailFragment"
+        android:name="com.alis.rickandmorty.presentation.ui.fragments.episodes.detail.EpisodeDetailFragment"
         android:label="{label}"
-        tools:layout="@layout/fragment_episodes_detail">
+        tools:layout="@layout/fragment_episode_detail">
         <argument
             android:name="label"
             app:argType="string" />

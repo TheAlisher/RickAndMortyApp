@@ -1,15 +1,14 @@
 package com.alis.rickandmorty.presentation.ui.fragments.characters
 
 import android.net.Uri
-import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
 import com.alis.rickandmorty.base.BaseFragment
+import com.alis.rickandmorty.common.extensions.bindUIToLoadState
 import com.alis.rickandmorty.common.resource.Resource
 import com.alis.rickandmorty.databinding.FragmentCharactersBinding
 import com.alis.rickandmorty.domain.models.character.SimpleLocation
@@ -37,19 +36,15 @@ class CharactersFragment : BaseFragment<CharactersViewModel, FragmentCharactersB
         this::onItemFirstSeenInClick,
     )
 
-    override fun initialize() {
-        binding.recyclerCharacters.apply {
+    override fun initialize() = with(binding) {
+        recyclerCharacters.apply {
             adapter = characterAdapter.withLoadStateFooter(
                 footer = LoadStateAdapter { characterAdapter.retry() }
             )
             layoutManager = LinearLayoutManager(context)
         }
 
-        characterAdapter.addLoadStateListener { loadStates ->
-            binding.apply {
-                recyclerCharacters.isVisible = loadStates.refresh is LoadState.NotLoading
-                progressCharactersLoader.isVisible = loadStates.refresh is LoadState.Loading
-            }
+        characterAdapter.bindUIToLoadState(recyclerCharacters, progressCharactersLoader) {
         }
     }
 

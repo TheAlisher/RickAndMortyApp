@@ -5,7 +5,7 @@
     style="@style/BaseRootStyle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ui.fragments.episodes.detail.EpisodesDetailFragment">
+    tools:context=".presentation.ui.fragments.episodes.detail.EpisodeDetailFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
