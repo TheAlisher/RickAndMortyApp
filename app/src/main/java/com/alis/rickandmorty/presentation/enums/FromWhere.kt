@@ -1,4 +1,4 @@
-package com.alis.rickandmorty.domain.models.enums
+package com.alis.rickandmorty.presentation.enums
 
 enum class FromWhere {
     CHARACTERS,

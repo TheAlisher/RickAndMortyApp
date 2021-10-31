@@ -31,14 +31,11 @@ class CharactersFragment : BaseFragment<CharactersViewModel, FragmentCharactersB
     private val characterAdapter = CharacterAdapter(
         this::onItemClick, this::onItemLongClick, this::fetchFirstSeenIn
     )
-    private val loadStateAdapter = LoadStateAdapter {
-        characterAdapter.retry()
-    }
 
     override fun initialize() {
         binding.recyclerCharacters.apply {
             adapter = characterAdapter.withLoadStateFooter(
-                footer = loadStateAdapter
+                footer = LoadStateAdapter { characterAdapter.retry() }
             )
             layoutManager = LinearLayoutManager(context)
         }
@@ -52,10 +49,6 @@ class CharactersFragment : BaseFragment<CharactersViewModel, FragmentCharactersB
     }
 
     override fun setupListeners() {
-        bottomNavigationItemReselectListener()
-    }
-
-    private fun bottomNavigationItemReselectListener() {
         (requireActivity() as MainActivity).setOnBottomNavigationItemReselectListener {
             binding.recyclerCharacters.smoothScrollToPosition(0)
         }
@@ -98,6 +91,10 @@ class CharactersFragment : BaseFragment<CharactersViewModel, FragmentCharactersB
     }
 
     override fun setupObservers() {
+        subscribeToCharacters()
+    }
+
+    private fun subscribeToCharacters() {
         lifecycleScope.launch {
             viewModel.fetchCharacters().collectLatest {
                 characterAdapter.submitData(it)

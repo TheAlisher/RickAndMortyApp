@@ -11,7 +11,6 @@ import com.alis.rickandmorty.domain.usecases.character.FetchCharactersUseCase
 import com.alis.rickandmorty.domain.usecases.episode.FetchEpisodeUseCase
 import com.alis.rickandmorty.presentation.state.UIState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -27,10 +26,8 @@ class CharactersViewModel @Inject constructor(
     fun fetchCharacters() = fetchCharactersUseCase().cachedIn(viewModelScope)
 
     fun fetchCharacter(id: Int) {
-        viewModelScope.launch {
-            subscribeTo(_characterState) {
-                fetchCharacterUseCase(id)
-            }
+        subscribeTo(_characterState) {
+            fetchCharacterUseCase(id)
         }
     }
 

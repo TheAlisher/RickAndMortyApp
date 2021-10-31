@@ -59,8 +59,8 @@
 
     <dialog
         android:id="@+id/charactersPhotoDetailDialog"
-        android:name="com.alis.rickandmorty.presentation.ui.fragments.characters.photodetail.CharactersPhotoDetailDialog"
-        tools:layout="@layout/dialog_characters_photo_detail">
+        android:name="com.alis.rickandmorty.presentation.ui.dialogs.characters.image.CharactersImageDialog"
+        tools:layout="@layout/dialog_characters_image">
         <argument
             android:name="image"
             app:argType="string" />

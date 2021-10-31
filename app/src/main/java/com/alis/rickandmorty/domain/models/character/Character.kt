@@ -1,7 +1,9 @@
 package com.alis.rickandmorty.domain.models.character
 
+import com.alis.rickandmorty.base.IBaseDiffModel
+
 data class Character(
-    val id: Int,
+    override val id: Int,
     val name: String,
     val status: String,
     val species: String,
@@ -14,5 +16,5 @@ data class Character(
     val url: String,
     val created: String,
 
-    var firstSeenIn: String? = null
-)
+    var firstSeenIn: String = ""
+) : IBaseDiffModel<Int>
