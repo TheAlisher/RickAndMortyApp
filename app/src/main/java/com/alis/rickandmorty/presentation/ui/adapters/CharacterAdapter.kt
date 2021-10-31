@@ -74,15 +74,16 @@ class CharacterAdapter(
             imageItemCharacter.load(character.image)
             textItemCharacterName.text = character.name
             setupCharacterStatus(character.status)
-
             textItemCharacterStatusAndSpecies.text = textItemCharacterStatusAndSpecies
                 .context
                 .resources
                 .getString(
                     R.string.hyphen, character.status, character.species
                 )
-            textItemCharacterLastKnownLocationData.text = character.location.name
-
+            with(textItemCharacterLastKnownLocationData) {
+                text = character.location.name
+                isEnabled = character.location.url.isNotEmpty()
+            }
             setupFirstSeenIn(character.firstSeenIn, character.episode.first())
         }
 
