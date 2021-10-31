@@ -3,14 +3,16 @@ package com.alis.rickandmorty.presentation.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.alis.rickandmorty.base.BaseDiffUtilItemCallback
 import com.alis.rickandmorty.databinding.ItemLocationBinding
 import com.alis.rickandmorty.domain.models.location.Location
 
 class LocationAdapter(
     val onItemClick: (name: String, id: Int) -> Unit
-) : PagingDataAdapter<Location, LocationAdapter.LocationViewHolder>(LocationDiffCallback()) {
+) : PagingDataAdapter<Location, LocationAdapter.LocationViewHolder>(
+    BaseDiffUtilItemCallback()
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationViewHolder {
         return LocationViewHolder(
@@ -36,22 +38,10 @@ class LocationAdapter(
             }
         }
 
-        fun onBind(location: Location) {
-            binding.apply {
-                textItemLocationName.text = location.name
-                textItemLocationType.text = location.type
-                textItemLocationDimension.text = location.dimension
-            }
-        }
-    }
-
-    class LocationDiffCallback : DiffUtil.ItemCallback<Location>() {
-        override fun areItemsTheSame(oldItem: Location, newItem: Location): Boolean {
-            return oldItem.id == newItem.id
-        }
-
-        override fun areContentsTheSame(oldItem: Location, newItem: Location): Boolean {
-            return oldItem == newItem
+        fun onBind(location: Location) = with(binding) {
+            textItemLocationName.text = location.name
+            textItemLocationType.text = location.type
+            textItemLocationDimension.text = location.dimension
         }
     }
 }
