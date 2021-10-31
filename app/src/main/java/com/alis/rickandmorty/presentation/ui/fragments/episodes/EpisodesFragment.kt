@@ -58,7 +58,7 @@ class EpisodesFragment : BaseFragment<EpisodesViewModel, FragmentEpisodesBinding
 
     private fun onItemClick(name: String, id: Int) {
         findNavController().navigate(
-            EpisodesFragmentDirections.actionNavigationEpisodesToEpisodesDetailFragment(
+            EpisodesFragmentDirections.actionNavigationEpisodesToEpisodeDetailFragment(
                 label = "${getString(R.string.fragment_label_detail_episode)} $name",
                 id = id
             )

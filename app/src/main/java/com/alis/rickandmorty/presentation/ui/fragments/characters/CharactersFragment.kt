@@ -12,6 +12,7 @@ import com.alis.rickandmorty.R
 import com.alis.rickandmorty.base.BaseFragment
 import com.alis.rickandmorty.common.resource.Resource
 import com.alis.rickandmorty.databinding.FragmentCharactersBinding
+import com.alis.rickandmorty.domain.models.character.SimpleLocation
 import com.alis.rickandmorty.presentation.ui.activity.MainActivity
 import com.alis.rickandmorty.presentation.ui.adapters.CharacterAdapter
 import com.alis.rickandmorty.presentation.ui.adapters.paging.LoadStateAdapter
@@ -29,7 +30,11 @@ class CharactersFragment : BaseFragment<CharactersViewModel, FragmentCharactersB
     override val binding by viewBinding(FragmentCharactersBinding::bind)
 
     private val characterAdapter = CharacterAdapter(
-        this::onItemClick, this::onItemLongClick, this::fetchFirstSeenIn
+        this::onItemClick,
+        this::onItemLongClick,
+        this::fetchFirstSeenIn,
+        this::onItemLastKnowLocationClick,
+        this::onItemFirstSeenInClick,
     )
 
     override fun initialize() {
@@ -72,9 +77,8 @@ class CharactersFragment : BaseFragment<CharactersViewModel, FragmentCharactersB
     }
 
     private fun fetchFirstSeenIn(position: Int, episodeUrl: String) {
-        val id = Uri.parse(episodeUrl).lastPathSegment?.toInt()!!
         lifecycleScope.launch {
-            viewModel.fetchEpisode(id).collect {
+            viewModel.fetchEpisode(episodeUrl.getIdFromUrl()).collect {
                 when (it) {
                     is Resource.Loading -> {
                     }
@@ -90,6 +94,24 @@ class CharactersFragment : BaseFragment<CharactersViewModel, FragmentCharactersB
         }
     }
 
+    private fun onItemLastKnowLocationClick(location: SimpleLocation) {
+        findNavController().navigate(
+            CharactersFragmentDirections.actionNavigationCharactersToLocationDetailFragment(
+                label = "${getString(R.string.fragment_label_detail_location)} ${location.name}",
+                id = location.url.getIdFromUrl()
+            )
+        )
+    }
+
+    private fun onItemFirstSeenInClick(name: String, url: String) {
+        findNavController().navigate(
+            CharactersFragmentDirections.actionNavigationCharactersToEpisodeDetailFragment(
+                label = "${getString(R.string.fragment_label_detail_episode)} $name",
+                id = url.getIdFromUrl()
+            )
+        )
+    }
+
     override fun setupObservers() {
         subscribeToCharacters()
     }
@@ -101,4 +123,6 @@ class CharactersFragment : BaseFragment<CharactersViewModel, FragmentCharactersB
             }
         }
     }
+
+    private fun String.getIdFromUrl() = Uri.parse(this).lastPathSegment?.toInt()!!
 }

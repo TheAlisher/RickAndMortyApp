@@ -16,6 +16,12 @@
         <action
             android:id="@+id/action_navigation_characters_to_characterImageDialog"
             app:destination="@id/characterImageDialog" />
+        <action
+            android:id="@+id/action_navigation_characters_to_locationDetailFragment"
+            app:destination="@id/locationDetailFragment" />
+        <action
+            android:id="@+id/action_navigation_characters_to_episodeDetailFragment"
+            app:destination="@id/episodeDetailFragment" />
     </fragment>
 
     <fragment
@@ -34,8 +40,8 @@
         android:label="@string/fragment_label_episodes"
         tools:layout="@layout/fragment_episodes">
         <action
-            android:id="@+id/action_navigation_episodes_to_episodesDetailFragment"
-            app:destination="@id/episodesDetailFragment" />
+            android:id="@+id/action_navigation_episodes_to_episodeDetailFragment"
+            app:destination="@id/episodeDetailFragment" />
     </fragment>
 
     <fragment
@@ -80,7 +86,7 @@
     </fragment>
 
     <fragment
-        android:id="@+id/episodesDetailFragment"
+        android:id="@+id/episodeDetailFragment"
         android:name="com.alis.rickandmorty.presentation.ui.fragments.episodes.detail.EpisodesDetailFragment"
         android:label="{label}"
         tools:layout="@layout/fragment_episodes_detail">

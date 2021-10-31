@@ -1,6 +1,5 @@
 package com.alis.rickandmorty.presentation.ui.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
@@ -11,12 +10,15 @@ import com.alis.rickandmorty.R
 import com.alis.rickandmorty.base.BaseDiffUtilItemCallback
 import com.alis.rickandmorty.databinding.ItemCharacterBinding
 import com.alis.rickandmorty.domain.models.character.Character
+import com.alis.rickandmorty.domain.models.character.SimpleLocation
 import com.alis.rickandmorty.presentation.enums.CharacterStatus
 
 class CharacterAdapter(
     val onItemClick: (name: String, id: Int) -> Unit,
     val onItemLongClick: (image: String) -> Unit,
-    val fetchFirstSeenIn: (position: Int, episodeUrl: String) -> Unit
+    val fetchFirstSeenIn: (position: Int, episodeUrl: String) -> Unit,
+    val onItemLastKnowLocationClick: (location: SimpleLocation) -> Unit,
+    val onItemFirstSeenInClick: (name: String, url: String) -> Unit
 ) : PagingDataAdapter<Character, CharacterAdapter.CharacterViewHolder>(
     BaseDiffUtilItemCallback()
 ) {
@@ -57,13 +59,13 @@ class CharacterAdapter(
                 }
 
                 textItemCharacterLastKnownLocationData.setOnClickListener {
-                    Log.d("anime", "textItemCharacterLastKnownLocationData")
-                    //TODO
+                    onItemLastKnowLocationClick(getItem(absoluteAdapterPosition)!!.location)
                 }
 
                 textItemCharacterFirstSeenInData.setOnClickListener {
-                    Log.d("anime", "textItemCharacterFirstSeenInData")
-                    //TODO
+                    with(getItem(absoluteAdapterPosition)!!) {
+                        onItemFirstSeenInClick(firstSeenIn, episode.first())
+                    }
                 }
             }
         }
