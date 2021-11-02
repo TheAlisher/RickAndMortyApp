@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface CharacterRepository {
 
+    // TODO; PagingData cannot be in domain layer
     fun fetchCharacters(
         name: String? = null,
         status: String? = null,

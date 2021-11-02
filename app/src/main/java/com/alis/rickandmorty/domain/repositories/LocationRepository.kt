@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface LocationRepository {
 
+    // TODO; PagingData cannot be in domain layer
     fun fetchLocations(
         name: String? = null,
         type: String? = null,
