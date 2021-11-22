@@ -1,50 +1,17 @@
 package com.alis.rickandmorty.data.network.pagingsources
 
-import android.net.Uri
-import androidx.paging.PagingSource
-import androidx.paging.PagingState
+import com.alis.rickandmorty.base.BasePagingSource
 import com.alis.rickandmorty.data.network.dtos.location.toLocation
 import com.alis.rickandmorty.data.network.apiservices.LocationApiService
+import com.alis.rickandmorty.data.network.dtos.location.LocationDto
 import com.alis.rickandmorty.domain.models.location.Location
-import retrofit2.HttpException
-import java.io.IOException
-
-private const val LOCATION_STARTING_PAGE_INDEX = 1
 
 class LocationPagingSource(
     private val service: LocationApiService,
     private val name: String?,
     private val type: String?,
     private val dimension: String?
-) : PagingSource<Int, Location>() {
-
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Location> {
-        val position = params.key ?: LOCATION_STARTING_PAGE_INDEX
-        return try {
-            val response = service.fetchLocations(position, name, type, dimension)
-            val next = response.info.next
-            val nextPageNumber = if (next == null) {
-                null
-            } else {
-                Uri.parse(response.info.next).getQueryParameter("page")!!.toInt()
-            }
-
-            LoadResult.Page(
-                data = response.results.map { it.toLocation() },
-                prevKey = null,
-                nextKey = nextPageNumber
-            )
-        } catch (exception: IOException) {
-            return LoadResult.Error(exception)
-        } catch (exception: HttpException) {
-            return LoadResult.Error(exception)
-        }
-    }
-
-    override fun getRefreshKey(state: PagingState<Int, Location>): Int? {
-        return state.anchorPosition?.let { anchorPosition ->
-            val anchorPage = state.closestPageToPosition(anchorPosition)
-            anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
-        }
-    }
-}
+) : BasePagingSource<LocationDto, Location>(
+    { service.fetchLocations(it, name, type, dimension) },
+    { data -> data.map { it.toLocation() } }
+)
