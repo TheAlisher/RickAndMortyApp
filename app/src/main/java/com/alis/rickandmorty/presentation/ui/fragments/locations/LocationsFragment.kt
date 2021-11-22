@@ -6,7 +6,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
-import com.alis.rickandmorty.base.BaseFragment
+import com.alis.rickandmorty.common.base.BaseFragment
 import com.alis.rickandmorty.common.extensions.bindUIToLoadState
 import com.alis.rickandmorty.databinding.FragmentLocationsBinding
 import com.alis.rickandmorty.presentation.ui.activity.MainActivity

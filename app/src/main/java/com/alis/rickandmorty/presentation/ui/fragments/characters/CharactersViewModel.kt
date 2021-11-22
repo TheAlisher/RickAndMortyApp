@@ -2,7 +2,7 @@ package com.alis.rickandmorty.presentation.ui.fragments.characters
 
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
-import com.alis.rickandmorty.base.BaseViewModel
+import com.alis.rickandmorty.common.base.BaseViewModel
 import com.alis.rickandmorty.domain.usecases.character.FetchCharactersUseCase
 import com.alis.rickandmorty.domain.usecases.episode.FetchEpisodeUseCase
 import com.alis.rickandmorty.domain.usecases.location.FetchLocationUseCase

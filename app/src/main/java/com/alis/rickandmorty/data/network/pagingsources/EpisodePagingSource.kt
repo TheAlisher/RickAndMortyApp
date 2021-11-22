@@ -1,6 +1,6 @@
 package com.alis.rickandmorty.data.network.pagingsources
 
-import com.alis.rickandmorty.base.BasePagingSource
+import com.alis.rickandmorty.common.base.BasePagingSource
 import com.alis.rickandmorty.data.network.dtos.episode.toEpisode
 import com.alis.rickandmorty.data.network.apiservices.EpisodeApiService
 import com.alis.rickandmorty.data.network.dtos.episode.EpisodeDto

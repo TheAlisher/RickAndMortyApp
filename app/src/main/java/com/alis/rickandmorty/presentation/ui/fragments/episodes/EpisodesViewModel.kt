@@ -2,7 +2,7 @@ package com.alis.rickandmorty.presentation.ui.fragments.episodes
 
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
-import com.alis.rickandmorty.base.BaseViewModel
+import com.alis.rickandmorty.common.base.BaseViewModel
 import com.alis.rickandmorty.domain.usecases.episode.FetchEpisodesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

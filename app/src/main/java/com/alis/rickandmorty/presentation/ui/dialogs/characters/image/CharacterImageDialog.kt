@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.viewbinding.library.dialogfragment.viewBinding
 import androidx.navigation.fragment.navArgs
 import coil.load
-import com.alis.rickandmorty.base.BaseDialog
+import com.alis.rickandmorty.common.base.BaseDialog
 import com.alis.rickandmorty.databinding.DialogCharacterImageBinding
 
 class CharacterImageDialog : BaseDialog<DialogCharacterImageBinding>() {

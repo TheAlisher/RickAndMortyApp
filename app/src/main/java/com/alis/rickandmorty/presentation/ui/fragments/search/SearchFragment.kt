@@ -6,7 +6,7 @@ import android.view.MenuInflater
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
-import com.alis.rickandmorty.base.BaseFragment
+import com.alis.rickandmorty.common.base.BaseFragment
 import com.alis.rickandmorty.databinding.FragmentSearchBinding
 
 class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>(

@@ -1,4 +1,4 @@
-package com.alis.rickandmorty.base
+package com.alis.rickandmorty.common.base
 
 import androidx.recyclerview.widget.DiffUtil
 

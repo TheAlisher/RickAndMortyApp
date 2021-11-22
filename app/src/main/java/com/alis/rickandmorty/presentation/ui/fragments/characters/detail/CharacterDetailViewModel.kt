@@ -2,7 +2,7 @@ package com.alis.rickandmorty.presentation.ui.fragments.characters.detail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.alis.rickandmorty.base.BaseViewModel
+import com.alis.rickandmorty.common.base.BaseViewModel
 import com.alis.rickandmorty.domain.models.character.Character
 import com.alis.rickandmorty.domain.usecases.character.FetchCharacterUseCase
 import com.alis.rickandmorty.presentation.state.UIState

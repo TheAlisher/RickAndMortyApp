@@ -3,7 +3,7 @@ package com.alis.rickandmorty.data.repositories
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.alis.rickandmorty.base.BaseRepository
+import com.alis.rickandmorty.common.base.BaseRepository
 import com.alis.rickandmorty.data.network.dtos.episode.toEpisode
 import com.alis.rickandmorty.data.network.apiservices.EpisodeApiService
 import com.alis.rickandmorty.data.network.pagingsources.EpisodePagingSource

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.alis.rickandmorty.base.BaseDiffUtilItemCallback
+import com.alis.rickandmorty.common.base.BaseDiffUtilItemCallback
 import com.alis.rickandmorty.databinding.ItemLocationBinding
 import com.alis.rickandmorty.domain.models.location.Location
 

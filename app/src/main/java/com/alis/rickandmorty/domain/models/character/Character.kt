@@ -1,6 +1,6 @@
 package com.alis.rickandmorty.domain.models.character
 
-import com.alis.rickandmorty.base.IBaseDiffModel
+import com.alis.rickandmorty.common.base.IBaseDiffModel
 
 data class Character(
     override val id: Int,

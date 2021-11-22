@@ -1,4 +1,4 @@
-package com.alis.rickandmorty.base
+package com.alis.rickandmorty.common.base
 
 import android.net.Uri
 import androidx.paging.PagingSource

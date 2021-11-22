@@ -1,4 +1,4 @@
-package com.alis.rickandmorty.base
+package com.alis.rickandmorty.common.base
 
 import com.alis.rickandmorty.common.resource.Resource
 import kotlinx.coroutines.flow.flow

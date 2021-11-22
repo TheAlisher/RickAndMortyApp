@@ -1,4 +1,4 @@
-package com.alis.rickandmorty.base
+package com.alis.rickandmorty.common.base
 
 interface IBaseDiffModel<N : Number> {
     val id: N

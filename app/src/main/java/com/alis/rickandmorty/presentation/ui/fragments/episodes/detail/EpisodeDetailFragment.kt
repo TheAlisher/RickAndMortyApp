@@ -5,7 +5,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alis.rickandmorty.R
-import com.alis.rickandmorty.base.BaseFragment
+import com.alis.rickandmorty.common.base.BaseFragment
 import com.alis.rickandmorty.common.extensions.showToastShort
 import com.alis.rickandmorty.databinding.FragmentEpisodeDetailBinding
 import com.alis.rickandmorty.presentation.state.UIState
