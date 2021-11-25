@@ -117,7 +117,7 @@ dependencies {
     implementation 'com.github.yogacp:android-viewbinding:1.0.3'
 
     // Paging 3
-    def paging_version = "3.0.1"
+    def paging_version = "3.1.0"
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
     // alternatively - without Android dependencies for tests
     implementation "androidx.paging:paging-common-ktx:$paging_version"
