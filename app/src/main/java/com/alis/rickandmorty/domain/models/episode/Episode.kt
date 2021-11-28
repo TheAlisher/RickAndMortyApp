@@ -10,4 +10,4 @@ data class Episode(
     val characters: MutableList<String>,
     val url: String,
     val created: String
-) : IBaseDiffModel<Int>
+) : IBaseDiffModel

@@ -10,4 +10,4 @@ data class Location(
     val residents: MutableList<String>,
     val url: String,
     val created: String
-) : IBaseDiffModel<Int>
+) : IBaseDiffModel

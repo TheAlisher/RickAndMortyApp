@@ -17,4 +17,4 @@ data class Character(
     val created: String,
 
     var firstSeenIn: String = ""
-) : IBaseDiffModel<Int>
+) : IBaseDiffModel
