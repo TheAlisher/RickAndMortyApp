@@ -5,8 +5,10 @@ import com.alis.rickandmorty.data.network.dtos.location.toLocation
 import com.alis.rickandmorty.data.network.apiservices.LocationApiService
 import com.alis.rickandmorty.data.network.pagingsources.LocationPagingSource
 import com.alis.rickandmorty.domain.repositories.LocationRepository
+import it.czerwinski.android.hilt.annotations.BoundTo
 import javax.inject.Inject
 
+@BoundTo(LocationRepository::class)
 class LocationRepositoryImpl @Inject constructor(
     private val service: LocationApiService
 ) : BaseRepository(), LocationRepository {
